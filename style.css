@@ -1,6 +1,7 @@
 @import url(component/navbar.css);
 @import url(component/banner.css);
 @import url(component/filter.css);
+@import url(component/trend.css);
 
 *{
     margin: 0;
