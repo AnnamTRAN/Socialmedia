@@ -1,36 +1,50 @@
 /*filter */
-const checkboxes = document.querySelectorAll('input[type="checkbox"]')
 const tags = document.querySelectorAll('.tag')
-
+let slctdElements = new Set() /*set for displayed tags only*/
+let hiddenElements  = new Set() /*set for hidden tags only*/
 
 const filter = (event) => {
-    let slctdElements = []
-    let hiddenElements = []
-    const target = event.target
-
-    if (target.checked){
-        tags.forEach(tag =>{
-            if (target.value === tag.getAttribute('value')){
-                slctdElements.push(tag)
-                tag.style.display = "block"
+    const evnt = event.target
+     
+    if (evnt.checked){ /*checked*/
+        tags.forEach(tag =>{ /*verify each post's tag if match with checkbox tag*/
+            if (evnt.value === tag.getAttribute('value')){ /*if same value add to slctedElements */
+                hiddenElements.delete(tag)
+                slctdElements.add(tag)
                 console.log(slctdElements)
             }
-            else{
-                hiddenElements.push(tag)
-                tag.style.display = "none"
-                console.log(hiddent)
+            else if(slctdElements.has(tag)){ /*if another checkbox checked show his tags*/
+                tag.style.display = "block"
+            }
+            else { /* no matching tags*/
+                hiddenElements.add(tag)
             }
         })
     }
-    else{
-        tags.forEach( tag =>{
-            tag.style.display = "block"
+
+    else if(!evnt.checked){ /*unchecked*/
+        tags.forEach(tag =>{ 
+            if (evnt.value === tag.getAttribute('value')){ /*if uncheck and other checkboxes checked -> hide*/
+                slctdElements.delete(tag)
+                hiddenElements.add(tag)
+                console.log(slctdElements)
+            }
         })
     }
 
+    slctdElements.forEach(element =>{
+        element.style.display = "block"
+    })
 
+    hiddenElements.forEach(element =>{
+        element.style.display = "none"
+    })
+
+    if (slctdElements.size === 0){ /* "reset" posts display*/
+        hiddenElements.forEach(element =>{
+            element.style.display = "block"
+        })   
+        hiddenElements.clear()
+    }
 }
-
-checkboxes.forEach(checkbox => {
-    checkbox.addEventListener('change',filter)
-})
+/*filter*/
