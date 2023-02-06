@@ -27,7 +27,8 @@ main,footer{
 }
 
 #global{
-    display:flex;
+    display:grid;
+    grid-template-columns: 85% 15%;
 }
 /**************** SMALL SCREEN *************/
 
