@@ -33,6 +33,7 @@ const filter = (event) => {
 
     slctdElements.forEach(element =>{
         element.style.display = "block"
+        element.style.backgroundColor = "#FFB6C1"
     })
 
     hiddenElements.forEach(element =>{
@@ -42,6 +43,7 @@ const filter = (event) => {
     if (slctdElements.size === 0){ /* "reset" posts display*/
         hiddenElements.forEach(element =>{
             element.style.display = "block"
+            element.style.backgroundColor = ""
         })   
         hiddenElements.clear()
     }
@@ -93,7 +95,7 @@ removeDiv.forEach(div =>{
 
 confirmButtons.forEach(button =>{
     button.addEventListener('click',()=>{
-        button.parentElement.parentElement.parentElement.parentElement.remove()
+        button.parentElement.parentElement.parentElement.remove()
     })
 })
 /************** swipe mobile ver ***************/
@@ -160,6 +162,8 @@ window.onclick = function(event) {
         alert.style.display = "none"
         postDiv.style.overflowY = "auto"
         postDiv.scrollTo(0,0)
+        mainContent.style.filter = ""
+        navbar.style.filter = ""
     }
 }
 
@@ -182,19 +186,26 @@ msgstore.addEventListener('keyup',(event) =>{
 /************************************* SCROLLING ************************/
 const postDiv = document.querySelector('#post')
 const spanScroll = document.querySelector('#close-alert');
-const alert = document.querySelector('#alert');
+const alert = document.querySelector('#alert')
+const alertBorder = document.querySelector('#alert-border')
+const mainContent = document.querySelector('#global')
+
 
 spanScroll.onclick = function() {
     alert.style.display = "none"
     postDiv.style.overflowY = "auto"
     postDiv.scrollTo(0,0)
+    mainContent.style.filter = ""
+    navbar.style.filter = ""
 }
 
 postDiv.addEventListener('scroll',()=>{
     console.log(postDiv.scrollTop)
-    if (postDiv.scrollTop> 120){
+    if (postDiv.scrollTop> 0){
         alert.style.display = "block"
         postDiv.style.overflowY = "hidden"
+        mainContent.style.filter = "blur(4px)"
+        navbar.style.filter = "blur(4px)"
     }
 })
 /************************************* SCROLLING ************************/
