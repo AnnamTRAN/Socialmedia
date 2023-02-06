@@ -7,7 +7,7 @@
     margin-top: auto;
 }
 
-/*modal*/
+/*******************************modal**************************/
 
 #modal{
     display: none;
@@ -20,31 +20,44 @@
     background-color: rgba(0,0,0,0.4);
 }
 
-#modal-content{
+#modal-border{
     background-color: #fefefe;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;    
 }
+/***********modal-content*********/
 
-.close {
+.modal-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#title{
+    width: 35%;
+}
+/***********modal-content*********/
+
+#close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+#close:hover,
+#close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
 
+
 #modal-link svg{
     width: 8vh;
-    margin-left: 10vh;  
+    margin-left: 10vh;
 }
 
-/*modal*/
+/*******************************modal**************************/
