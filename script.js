@@ -70,6 +70,7 @@ const removeDiv = document.querySelectorAll('.remove')
 const removeButtons = document.querySelectorAll('.remove-button')
 const confirmButtons = document.querySelectorAll('button[value="yes"]')
 const cancelButtons = document.querySelectorAll('button[value="no"]')
+const navbar = document.getElementById('navbar')
 
 removeButtons.forEach(button =>{
     button.addEventListener('click',()=>{
@@ -96,6 +97,43 @@ confirmButtons.forEach(button =>{
         button.parentElement.parentElement.parentElement.parentElement.remove()
     })
 })
+/************** swipe mobile ver ***************/
+let downX = null
+let downY = null
+
+const display = () =>{
+    navbar.style.transform = "translateX(0%)"
+}
+
+navbar.addEventListener('touchstart',(ev)=>{
+    downX = ev.touches[0].clientX
+    downY = ev.touches[0].clientY
+})
+
+navbar.addEventListener('touchmove',(ev)=>{
+    let upX = ev.touches[0].clientX
+    let upY = ev.touches[0].clientY
+    let diffX = downX - upX
+    let diffY = downY - upY
+    if(!downX || !downY){
+        return
+    }
+
+    if(Math.abs(diffX) > Math.abs(diffY)){
+        if (diffX > 0){
+            navbar.style.transform = "translateX(-100%)"
+        }
+        else{
+            navbar.style.transform = "tranlateX(0%)"
+        }
+    }
+    downX = null;
+    downY = null;
+})
+
+/************** swipe mobile ver ***************/
+
+
 
 
 /*************************************************** POST **************************************************/

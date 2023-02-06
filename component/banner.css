@@ -9,3 +9,23 @@
     justify-content: center;
 }
 
+#mobile-menu{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 5vh;
+    width: 10vw;
+    margin: 5%;
+}
+
+#mobile-menu svg{
+    height: 5vh;
+    width: 8vw;
+}
+
+@media only screen and (max-width: 600px){
+    #mobile-menu{
+        display: block;
+    }
+}

@@ -4,7 +4,8 @@
     overflow-y: auto;
     top: 25vh;
     bottom: 0vh;
-    width: 92vh;
+    width: 100%;
+    z-index: 1;
 }
 
 #post::-webkit-scrollbar{

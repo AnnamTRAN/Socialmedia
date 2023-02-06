@@ -1,5 +1,6 @@
 #navbar{
     position: fixed;
+    transition: transform 0.5s ease;
 }
 
 .nav-item{
@@ -17,20 +18,53 @@
     height: 100%;
 }  
 
+.nav-link{
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(338deg) brightness(103%) contrast(104%);    
+}
+
+
 .link-text{
     display: none;
 }
 
-.nav-link svg{
-    min-width: 2rem;
-    margin: 1rem;
-}
 
-/**************** large screen *************/
+
+/**************** LARGE SCREEN *************/
 @media only screen and (min-width: 600px){
     .navbar{
         top: 0;
         height: 100vh;
     }
+
+    .nav-link svg{
+        min-width: 2rem;
+        margin: 1rem;
+    }
 }
-/*************** large screen *************/
+/*************** LARGE SCREEN *************/
+
+
+
+/**************** SMALL SCREEN *************/
+
+@media only screen and (max-width: 600px){
+    #navbar{
+        transform: translateX(-100%);
+        z-index: 2;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    .nav-link svg{
+        min-width: 3rem;
+        margin-top: 3rem;
+        margin-right: 2rem;
+    }
+
+    .nav-item{
+        width: 20%;
+    }
+}
+
+/**************** SMALL SCREEN *************/

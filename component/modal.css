@@ -61,3 +61,26 @@
 }
 
 /*******************************modal**************************/
+
+
+
+/**************** SMALL SCREEN *************/
+@media only screen and (max-width: 600px){
+    #trend{
+        position: fixed;
+        z-index: 2;
+        width: 100vw;
+        bottom: 0;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .trend-item{
+        width: 20%;
+    }
+
+    #modal-link svg{
+        margin-left: 0;
+    }
+}
+/**************** SMALL SCREEN *************/
