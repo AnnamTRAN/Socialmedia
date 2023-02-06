@@ -1,4 +1,48 @@
 #filter{
     display: flex;
     list-style-type: none;
+    align-items: center;
+}
+
+#uncheck{
+    font-family: 'Comfortaa', cursive;
+    font-size: 12px;
+    border-radius: 30px;
+    padding: 15px 15px;
+    cursor: pointer;
+    border: none;
+    background-color: #bc4341;
+    color: #FFFFFA;
+    transition: all 0.3s ease;
+}
+#uncheck:hover{
+    transform: translateY(-3px);
+    color: #333138;
+}
+
+.checkbox{
+    position: absolute;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    height: 20px;
+    width: 20px;
+    margin-left: 2vh;
+}
+
+
+
+#label-tag1{
+    color: var(--color-tag1);
+    text-shadow: #000103 1px 2px;    
+}
+
+#label-tag2{
+    color: var(--color-tag2);
+    text-shadow: #000103 1px 2px;    
+}
+
+#label-tag3{
+    color: var(--color-tag3);
+    text-shadow: #000103 1px 2px;    
 }

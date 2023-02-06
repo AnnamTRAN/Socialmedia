@@ -28,4 +28,7 @@ main,footer{
     padding: 5%;
 }
 
-
+h1{
+    background-color: white;
+    border-radius: 15px;
+}

@@ -81,7 +81,7 @@
 
 .tag{
     padding: 2vh;
-}
+    }
 
 .remove-button{
     float: right;
@@ -89,13 +89,13 @@
 }
 
 .tag[data-value="tag1"] h2{
-    color: red;
+    color: var(--color-tag1);
 }
 
 .tag[data-value="tag2"] h2{
-    color: blue;
+    color: var(--color-tag2);
 }
 
 .tag[data-value="tag3"] h2{
-    color: yellow;
+    color: var(--color-tag3);
 }

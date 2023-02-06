@@ -8,8 +8,9 @@
     <title>MeowChat</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Comfortaa&display=swap" rel="stylesheet">
 <body>
     <header>
         <!-- SIDE NAVBAR -->
@@ -57,31 +58,30 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M272 304h-96C78.8 304 0 382.8 0 480c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32C448 382.8 369.2 304 272 304zM48.99 464C56.89 400.9 110.8 352 176 352h96c65.16 0 119.1 48.95 127 112H48.99zM224 256c70.69 0 128-57.31 128-128c0-70.69-57.31-128-128-128S96 57.31 96 128C96 198.7 153.3 256 224 256zM224 48c44.11 0 80 35.89 80 80c0 44.11-35.89 80-80 80S144 172.1 144 128C144 83.89 179.9 48 224 48z"/></svg>                    <span class="link-text"> Home </span>
                     </button>
 
-                    <h1>Title page</h1>
-
-                    <div>
-                        <input type="button" value="Uncheck" class="checkbox" id="Uncheck" onclick="Uncheck(this)">
-                    </div>
+                    <h1>MeowChat</h1>
 
                     <ul id="filter">
                         <li>
+                            <input type="button" value="Uncheck" id="uncheck" onclick="Uncheck(this)">
+                        </li>
+                        <li>
                             <div>
                                 <input type="checkbox" data-value="tag1" class="checkbox" id="tag1" onchange="filter(event)">
-                                <label for="tag1">Tag 1</label>
+                                <label for="tag1" id="label-tag1">Tag 1</label>
                             </div>
                         </li>
 
                         <li>
                             <div>
                                 <input type="checkbox" data-value="tag2" class="checkbox" id="tag2" onchange="filter(event)">
-                                <label for="tag2">Tag 2</label>
+                                <label for="tag2" id="label-tag2">Tag 2</label>
                             </div>                       
                         </li>
 
                         <li>
                             <div>
                                 <input type="checkbox" data-value="tag3" class="checkbox" id="tag3" onchange="filter(event)">
-                                <label for="tag3">Tag 3</label>
+                                <label for="tag3" id="label-tag3">Tag 3</label>
                             </div>
                         </li>
                     </ul>
@@ -106,8 +106,8 @@
                     </div>
 
                     <article class="tag" data-value="tag1">
-                        <h2>Premier post tag1</h2>
-                        <p>Le post de ouf</p>
+                        <h2>post tag1</h2>
+                        <p>Le post bien</p>
                         <button class="remove-button"><i class="fa fa-trash"></i></button>
                         <div class="remove">
                             <div class="remove-border">
@@ -119,12 +119,12 @@
                     </article>
 
                     <article class="tag" data-value="tag2">
-                        <h2>Premier post tag2</h2>                    
+                        <h2>post tag2</h2>                    
                     </article>
 
                     <article class="tag" data-value="tag1"> <!-- Exemple of post -->
-                        <h2>Premier post tag1</h2>
-                        <p>Le post de ouf</p>
+                        <h2>post tag1</h2>
+                        <p>Le post moins bien</p>
                         <button class="remove-button"><i class="fa fa-trash"></i></button>
                         <div class="remove">
                             <div class="remove-border">
@@ -136,35 +136,36 @@
                     </article>
 
                     <article class="tag" data-value="tag3">
-                        <h2>Premier post tag3</h2>                    
+                        <h2>post tag3</h2> 
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam asperiores cum voluptates doloremque odio saepe!</p>                   
                     </article>
 
                     <article class="tag" data-value="tag3">
-                        <h2>Premier post tag3</h2>                    
+                        <h2>post tag3</h2>                    
                     </article>
 
                     <article class="tag" data-value="tag3">
-                        <h2>Premier post tag3</h2>                    
+                        <h2>post tag3</h2>                    
                     </article>
 
                     <article class="tag" data-value="tag3">
-                        <h2>Premier post tag3</h2>                    
+                        <h2>post tag3</h2>                    
                     </article>
 
                     <article class="tag" data-value="tag3">
-                        <h2>Premier post tag3</h2>                    
+                        <h2>post tag3</h2>                    
                     </article>
 
                     <article class="tag" data-value="tag3">
-                        <h2>Premier post tag3</h2>                    
+                        <h2>post tag3</h2>                    
                     </article>
 
                     <article class="tag" data-value="tag3">
-                        <h2>Premier post tag3</h2>                    
+                        <h2>post tag3</h2>                    
                     </article>
 
                     <article class="tag" data-value="tag3">
-                        <h2>Premier post tag3</h2>                    
+                        <h2>post tag3</h2>                    
                     </article>
                 </div>
                 <!-- Posts space -->

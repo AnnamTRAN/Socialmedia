@@ -11,7 +11,6 @@ const filter = (event) => {
             if (evnt.getAttribute('data-value') === tag.getAttribute('data-value')){ /*if same value add to slctedElements */
                 hiddenElements.delete(tag)
                 slctdElements.add(tag)
-                console.log(slctdElements)
             }
             else if(slctdElements.has(tag)){ /*if another checkbox checked show his tags*/
                 tag.style.display = "block"

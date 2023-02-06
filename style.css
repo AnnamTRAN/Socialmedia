@@ -9,7 +9,8 @@
     padding: 0;
 }
 body{
-    background-color: #4E3758;
+    background-color: var(--color-bg);
+    font-family: 'Comfortaa', cursive;
 }
 
 /*space for navbar and trend*/
@@ -40,3 +41,15 @@ main,footer{
     }
 }
 /**************** SMALL SCREEN *************/
+
+/**************** VARIABLES *************/
+
+:root{
+    --color-tag1:#FF312E;
+    --color-tag2:#6699CC;
+    --color-tag3:#FFB627;
+    --color-bg: #4E3758;
+}
+
+/**************** VARIABLES *************/
+
