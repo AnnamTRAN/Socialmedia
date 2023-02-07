@@ -55,7 +55,8 @@ const Uncheck = () => {
     hiddenElements.clear()
 
     tags.forEach(tag =>{
-        tag.style.display = "block"
+        tag.style.display = "block"            
+        tag.style.backgroundColor = ""
     })
 
     filters.forEach(filter =>{
