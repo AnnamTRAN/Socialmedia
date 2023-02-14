@@ -13,12 +13,11 @@ body{
     font-family: 'Comfortaa', cursive;
 }
 
-/*space for navbar and trend*/
+/*space for navbar*/
 main,footer{
-    margin-left: 5rem;
-    margin-right: 5rem;
+    margin-left: 10rem;
 }
-/*space for navbar and trend*/
+/*space for navbar*/
 
 #main_content{
     height: 100vh;
@@ -28,7 +27,7 @@ main,footer{
 
 #global{
     display:grid;
-    grid-template-columns: 85% 15%;
+    grid-template-columns: 75% 25%;
 }
 /**************** SMALL SCREEN *************/
 
