@@ -58,7 +58,7 @@
     top: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,0.4);   
+    background-color: rgba(0,0,0,0.4);
 }
 
 .remove-border{
@@ -70,7 +70,6 @@
 }
 
 .remove-border button{
-    border-radius: 10px;
     padding: 2vh 2vh;
     margin: 2%;
     cursor: pointer;
@@ -80,13 +79,17 @@
 }
 
 .tag{
-    padding: 2vh;
-    border-radius: 10px;    
+    overflow: hidden;
+    margin: 2vh;
+    border-top: 1px solid #9879A6;
+    border-bottom: 1px solid #9879A6;
 }
 
 .remove-button{
-    float: right;
+    border-radius: 5px;
+    background-color: #8CA647;
     cursor: pointer;
+    float: right;
 }
 
 .tag[data-value="tag1"] h2{
