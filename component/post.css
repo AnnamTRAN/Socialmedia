@@ -86,8 +86,12 @@
 }
 
 .remove-button{
+    display: flex;
+    align-items: center;
     border-radius: 5px;
-    background-color: #8CA647;
+    padding: 5px;
+    background-color: #95C3CF;
+    font-family: 'Monocraft', cursive;
     cursor: pointer;
     float: right;
 }
