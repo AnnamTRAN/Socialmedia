@@ -10,7 +10,7 @@
 }
 body{
     background-color: var(--color-bg);
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Monocraft', cursive;
 }
 
 /*space for navbar*/
@@ -48,8 +48,11 @@ main,footer{
     --color-tag1:#FF312E;
     --color-tag2:#6699CC;
     --color-tag3:#FFB627;
-    --color-bg: #4E3758;
+    --color-bg: #ceb195;
 }
 
 /**************** VARIABLES *************/
 
+p{
+    color: white;
+}
