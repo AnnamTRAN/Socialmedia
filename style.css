@@ -1,8 +1,8 @@
-@import url(component/navbar.css);
-@import url(component/banner.css);
-@import url(component/filter.css);
-@import url(component/modal.css);
-@import url(component/post.css);
+@import url(css/navbar.css);
+@import url(css/banner.css);
+@import url(css/filter.css);
+@import url(css/modal.css);
+@import url(css/post.css);
 
 *{
     margin: 0;

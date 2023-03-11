@@ -1,9 +1,9 @@
-@import url(component/navbar.css);
-@import url(component/banner.css);
+@import url(css/navbar.css);
+@import url(css/banner.css);
 
 
 body{
-    background-color: #221826;
+    background-color: var(--color-bg);
 }
 
 *{
@@ -31,4 +31,11 @@ main,footer{
 h1{
     background-color: white;
     border-radius: 15px;
+}
+
+:root{
+    --color-tag1:#FF312E;
+    --color-tag2:#6699CC;
+    --color-tag3:#FFB627;
+    --color-bg: #ceb195;
 }
