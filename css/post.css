@@ -80,20 +80,25 @@
 
 .tag{
     overflow: hidden;
-    margin: 2vh;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    position: relative;
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 75%;
 }
 
 .remove-button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
     display: flex;
     align-items: center;
     border-radius: 5px;
     padding: 5px;
+    margin: 5px;
     background-color: #95C3CF;
     font-family: 'Monocraft', cursive;
     cursor: pointer;
-    float: right;
 }
 
 .tag[data-value="tag1"] h2{
@@ -107,12 +112,3 @@
 .tag[data-value="tag3"] h2{
     color: var(--color-tag3);
 }
-
-/**************** LARGE SCREEN *************/
-@media only screen and (min-width: 600px){
-    #post{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-}
-/**************** LARGE SCREEN *************/
