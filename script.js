@@ -82,14 +82,14 @@ removeButtons.forEach(button =>{
 
 cancelButtons.forEach(button =>{
     button.addEventListener('click',()=>{
-        button.closest('.remove').style.display = "none"
+        button.closest('.remove').style.visibility = "hidden"
     })
 })
 
 removeDiv.forEach(div =>{
     div.addEventListener('click',(event)=>{
         if(event.target.style.display === "block"){
-            event.target.style.display = "none"
+            event.target.style.visibility = "hidden"
         }
     })
 })

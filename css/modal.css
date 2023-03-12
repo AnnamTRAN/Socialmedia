@@ -25,7 +25,7 @@
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;    
+    width: 50%;    
 }
 /***********modal-content*********/
 
@@ -35,9 +35,10 @@
     align-items: center;
 }
 
-#title{
-    width: 35%;
+.modal-el{
+    margin: 5px;
 }
+
 /***********modal-content*********/
 
 #modal-link svg{
