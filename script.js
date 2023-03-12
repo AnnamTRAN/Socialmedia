@@ -70,8 +70,8 @@ const Uncheck = () => {
 /*************************************************** POST **************************************************/
 const removeDiv = document.querySelectorAll('.remove')
 const removeButtons = document.querySelectorAll('.remove-button')
-const confirmButtons = document.querySelectorAll('button[value="yes"]')
-const cancelButtons = document.querySelectorAll('button[value="no"]')
+const confirmButtons = document.querySelectorAll('.yes')
+const cancelButtons = document.querySelectorAll('.no')
 const navbar = document.getElementById('navbar')
 
 removeButtons.forEach(button =>{
@@ -96,7 +96,7 @@ removeDiv.forEach(div =>{
 
 confirmButtons.forEach(button =>{
     button.addEventListener('click',()=>{
-        button.parentElement.parentElement.parentElement.remove()
+        button.parentElement.parentElement.parentElement.parentElement.remove()
     })
 })
 /************** swipe mobile ver ***************/
@@ -145,15 +145,10 @@ navbar.addEventListener('touchmove',(ev)=>{
 /*************************************************** MODAL **************************************************/
 const modal = document.getElementById('modal')
 const btn = document.getElementById('modal-link')
-const span = document.getElementById('close')
 
 btn.onclick = function() {
     modal.style.display = "block"
   }
-
-span.onclick = function() {
-    modal.style.display = "none"
-}
 
 window.onclick = function(event) {
     if (event.target == modal) {
@@ -186,19 +181,9 @@ msgstore.addEventListener('keyup',(event) =>{
 
 /************************************* SCROLLING ************************/
 const postDiv = document.querySelector('#post')
-const spanScroll = document.querySelector('#close-alert');
 const alert = document.querySelector('#alert')
 const alertBorder = document.querySelector('#alert-border')
 const mainContent = document.querySelector('#global')
-
-
-spanScroll.onclick = function() {
-    alert.style.display = "none"
-    postDiv.style.overflowY = "auto"
-    postDiv.scrollTo(0,0)
-    mainContent.style.filter = ""
-    navbar.style.filter = ""
-}
 
 postDiv.addEventListener('scroll',()=>{
     console.log(postDiv.scrollTop)

@@ -9,7 +9,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid salmon;
 }
 
 h1{
@@ -17,25 +16,46 @@ h1{
     font-size: 500%;
     color: #36454F;
     user-select: none;
+    animation: floating 3s ease-in-out infinite;
 }
+
+@keyframes floating {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(10px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
 
 #mobile-menu{
     display: none;
     position: absolute;
     left: 0;
-    top: 0;
-    height: 5vh;
-    width: 10vw;
+    top: 3;
+    height: 3rem;
+    width: 3rem;
     margin: 5%;
+    z-index: 1;
 }
 
 #mobile-menu svg{
-    height: 5vh;
-    width: 8vw;
+    min-width: 2rem;
 }
 
+
+/**************** SMALL SCREEN *************/
 @media only screen and (max-width: 600px){
     #mobile-menu{
         display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;    
     }
+    
 }
+/**************** SMALL SCREEN *************/

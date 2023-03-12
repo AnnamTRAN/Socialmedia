@@ -10,7 +10,7 @@
 }
 body{
     background-color: var(--color-bg);
-    font-family: 'Monocraft', cursive;
+    font-family: 'Lora';
 }
 
 /*space for navbar*/
@@ -46,14 +46,18 @@ main,footer{
 /**************** VARIABLES *************/
 
 :root{
-    --color-tag1:#FF312E;
-    --color-tag2:#6699CC;
-    --color-tag3:#FFB627;
+    --color-tag1:#9e0142;
+    --color-tag2:#d53e4f;
+    --color-tag3:#f46d43;
+    --color-tag4:#fdae61;
+    --color-tag5:#fee08b;
+    --color-tag6:#e6f598;
+    --color-tag7:#abdda4;
+    --color-tag8:#66c2a5;
+    --color-tag9:#3288bd;
+    --color-tag10:#5e4fa2;
+
     --color-bg: #CEB195;
 }
 
 /**************** VARIABLES *************/
-
-p{
-    color: white;
-}

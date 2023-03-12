@@ -1,6 +1,8 @@
 #navbar{
     position: fixed;
     transition: transform 0.5s ease;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
 }
 
 
@@ -24,6 +26,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
+    color: #3C2A21;
 }
 
 .link-text{
@@ -38,8 +41,7 @@
     }
 
     .nav-link svg{
-        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(338deg) brightness(103%) contrast(104%);
-        min-width: 2rem;
+        filter: invert(15%) sepia(52%) saturate(359%) hue-rotate(336deg) brightness(91%) contrast(93%);        min-width: 2rem;
         margin: 1rem;
     }
 

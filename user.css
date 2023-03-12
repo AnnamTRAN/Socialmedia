@@ -20,6 +20,7 @@ main,footer{
     flex-direction: column;
     align-items: center;
     padding-top: 35vh;
+    font-family: 'Lora';
 }
 
 .col-12{
@@ -29,8 +30,7 @@ main,footer{
 }
 
 h1{
-    background-color: white;
-    border-radius: 15px;
+    font-family: 'Great Vibes', cursive;
 }
 
 :root{
@@ -38,4 +38,12 @@ h1{
     --color-tag2:#6699CC;
     --color-tag3:#FFB627;
     --color-bg: #ceb195;
+}
+
+p{
+    margin-bottom: 0;
+}
+
+.navbar-nav{
+    --bs-nav-link-padding-y: 0;
 }

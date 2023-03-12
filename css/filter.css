@@ -1,30 +1,32 @@
 #filter{
-    display: flex;
     list-style-type: none;
     align-items: center;
+    width: 50%;
+    user-select: none;
+
 }
 
 #uncheck{
-    font-family: 'Comfortaa', cursive;
+    font-family: 'Lora';
     font-size: 12px;
-    border-radius: 30px;
+    border-radius: 15px;
+    margin-bottom: 5px;
     padding: 15px 15px;
     cursor: pointer;
-    border: none;
-    background-color: #bc4341;
+    border-color: #96DED1;
+    background-color: #4682B4;
     color: #FFFFFA;
     transition: all 0.3s ease;
 }
 #uncheck:hover{
     transform: translateY(-3px);
     color: #333138;
+    border-color: #4682B4;
+    background-color: #96DED1;
 }
 
 .checkbox{
-    position: absolute;
     cursor: pointer;
-    display: inline-block;
-    position: relative;
     height: 20px;
     width: 20px;
     margin-left: 2vh;
@@ -34,15 +36,69 @@
 
 #label-tag1{
     color: var(--color-tag1);
-    text-shadow: #000103 1px 2px;    
+    text-shadow: #000103 1px 1px;    
 }
 
 #label-tag2{
     color: var(--color-tag2);
-    text-shadow: #000103 1px 2px;    
+    text-shadow: #000103 1px 1px;    
 }
 
 #label-tag3{
     color: var(--color-tag3);
-    text-shadow: #000103 1px 2px;    
+    text-shadow: #000103 1px 1px;    
 }
+
+#label-tag4{
+    color: var(--color-tag4);
+    text-shadow: #000103 1px 1px;    
+}
+
+#label-tag5{
+    color: var(--color-tag5);
+    text-shadow: #000103 1px 1px;    
+}
+
+#label-tag6{
+    color: var(--color-tag6);
+    text-shadow: #000103 1px 1px;    
+}
+
+#label-tag7{
+    color: var(--color-tag7);
+    text-shadow: #000103 1px 1px;    
+}
+
+#label-tag8{
+    color: var(--color-tag8);
+    text-shadow: #000103 1px 1px;    
+}
+
+#label-tag9{
+    color: var(--color-tag9);
+    text-shadow: #000103 1px 1px;    
+}
+
+#label-tag10{
+    color: var(--color-tag10);
+    text-shadow: #000103 1px 1px;    
+}
+
+/*************** LARGE SCREEN *************/
+@media only screen and (min-width: 600px){
+    #filter{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+/*************** LARGE SCREEN *************/
+
+
+/*************** SMALL SCREEN *************/
+@media only screen and (max-width: 600px){
+    #filter{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+/*************** SMALL SCREEN *************/
