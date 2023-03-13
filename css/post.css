@@ -2,7 +2,7 @@
 #post{
     position: absolute;
     overflow-y: auto;
-    top: 35vh;
+    top: 32vh;
     bottom: 0vh;
     width: 100%;
     z-index: 1;

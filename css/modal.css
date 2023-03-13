@@ -1,6 +1,7 @@
 #trend{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .trend-item:last-child{
