@@ -1,28 +1,38 @@
+#div-filter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #filter{
     list-style-type: none;
     align-items: center;
-    width: 50%;
+    width: 100%;
     user-select: none;
-
+    background-color: #514438;
+    border-radius: 10px;
+    margin-left: 1rem;
 }
 
 #uncheck{
     font-family: 'Lora';
     font-size: 12px;
     border-radius: 15px;
-    margin-bottom: 5px;
+    margin-top: 25px;
+    margin-bottom: 25px;
     padding: 15px 15px;
     cursor: pointer;
-    border-color: #96DED1;
-    background-color: #4682B4;
+    border-color: #578B82;
+    background-color: #8BC0B7;
     color: #FFFFFA;
     transition: all 0.3s ease;
 }
 #uncheck:hover{
     transform: translateY(-3px);
     color: #333138;
-    border-color: #4682B4;
-    background-color: #96DED1;
+    border-color: #8BC0B7;
+    background-color: #578B82;
 }
 
 .checkbox{
@@ -36,52 +46,69 @@
 
 #label-tag1{
     color: var(--color-tag1);
-    text-shadow: #000103 1px 1px;    
+    text-shadow: #000103 1px 1px;
+    font-size: 50%;
 }
 
 #label-tag2{
     color: var(--color-tag2);
-    text-shadow: #000103 1px 1px;    
+    text-shadow: #000103 1px 1px; 
+    font-size: 50%;   
 }
 
 #label-tag3{
     color: var(--color-tag3);
-    text-shadow: #000103 1px 1px;    
+    text-shadow: #000103 1px 1px; 
+    font-size: 50%;   
 }
 
 #label-tag4{
     color: var(--color-tag4);
-    text-shadow: #000103 1px 1px;    
+    text-shadow: #000103 1px 1px;
+    font-size: 50%;    
 }
 
 #label-tag5{
     color: var(--color-tag5);
-    text-shadow: #000103 1px 1px;    
+    text-shadow: #000103 1px 1px;
+    font-size: 50%;    
 }
 
 #label-tag6{
     color: var(--color-tag6);
-    text-shadow: #000103 1px 1px;    
+    text-shadow: #000103 1px 1px;
+    font-size: 50%;    
 }
 
 #label-tag7{
     color: var(--color-tag7);
-    text-shadow: #000103 1px 1px;    
+    text-shadow: #000103 1px 1px;
+    font-size: 50%;    
 }
 
 #label-tag8{
     color: var(--color-tag8);
-    text-shadow: #000103 1px 1px;    
+    text-shadow: #000103 1px 1px;
+    font-size: 50%;    
 }
 
 #label-tag9{
     color: var(--color-tag9);
-    text-shadow: #000103 1px 1px;    
+    text-shadow: #000103 1px 1px;
+    font-size: 50%;    
 }
 
 #label-tag10{
     color: var(--color-tag10);
-    text-shadow: #000103 1px 1px;    
+    text-shadow: #000103 1px 1px;
+    font-size: 50%;    
+}
+
+.hidden{
+    transform: translateY(-100vh);
+    opacity: 0;
+    z-index: -1;
+    transition: all, 0.5s ease-out;
 }
 
 /*************** LARGE SCREEN *************/
@@ -98,7 +125,7 @@
 @media only screen and (max-width: 600px){
     #filter{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 }
 /*************** SMALL SCREEN *************/
