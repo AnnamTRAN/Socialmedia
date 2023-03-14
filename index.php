@@ -29,7 +29,7 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link">
+                    <a href="index.php" class="nav-link">
                         <p>Home</p>
                         <img src="favicon_package_v0.16/favicon-32x32.png" alt="logo"/>
                         <span class="link-text"> Home </span>    
@@ -58,75 +58,16 @@
                 <input type="button" value="Uncheck" id="uncheck" onclick="Uncheck(this)">
 
                 <ul id="filter">
-                    <li>
-                        <div>
-                            <input type="checkbox" data-value="tag1" class="checkbox" id="tag1" onchange="filter(event)">
-                            <label for="tag1" id="label-tag1">Tag 1</label>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <input type="checkbox" data-value="tag2" class="checkbox" id="tag2" onchange="filter(event)">
-                            <label for="tag2" id="label-tag2">Tag 2</label>
-                        </div>                       
-                    </li>
-
-                    <li>
-                        <div>
-                            <input type="checkbox" data-value="tag3" class="checkbox" id="tag3" onchange="filter(event)">
-                            <label for="tag3" id="label-tag3">Tag 3</label>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <input type="checkbox" data-value="tag4" class="checkbox" id="tag4" onchange="filter(event)">
-                            <label for="tag4" id="label-tag4">Tag 4</label>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <input type="checkbox" data-value="tag5" class="checkbox" id="tag5" onchange="filter(event)">
-                            <label for="tag5" id="label-tag5">Tag 5</label>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <input type="checkbox" data-value="tag6" class="checkbox" id="tag6" onchange="filter(event)">
-                            <label for="tag6" id="label-tag6">Tag 6</label>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <input type="checkbox" data-value="tag7" class="checkbox" id="tag7" onchange="filter(event)">
-                            <label for="tag7" id="label-tag7">Tag 7</label>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <input type="checkbox" data-value="tag8" class="checkbox" id="tag8" onchange="filter(event)">
-                            <label for="tag8" id="label-tag8">Tag 8</label>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <input type="checkbox" data-value="tag9" class="checkbox" id="tag9" onchange="filter(event)">
-                            <label for="tag9" id="label-tag9">Tag 9</label>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div>
-                            <input type="checkbox" data-value="tag10" class="checkbox" id="tag10" onchange="filter(event)">
-                            <label for="tag10" id="label-tag10">Tag 10</label>
-                        </div>
-                    </li>
+                    <?php
+                        for ($i= 1; $i <= 10; $i++){
+                            echo '<li>
+                                <div>
+                                <input type="checkbox" data-value="tag' . $i .'" class="checkbox" id="tag' . $i .'" onchange="filter(event)">
+                                <label for="tag' . $i .'" id="label-tag' . $i .'">Tag ' . $i .'</label>
+                                </div>
+                                </li>';
+                        }
+                    ?>
                 </ul>
             </div>
         </nav>
@@ -196,11 +137,11 @@
                                 <option data-value="">Select tag</option>
                                 <?php
                                 for ($i = 1; $i <= 10; $i++){
-                                    echo '<option' . 'datavalue='. $i '>' . '</option>'
+                                    echo '<option datavalue="'. $i .'">tag' . $i . '</option>';
                                 }
                                 ?>
-
                             </select>
+
                             <textarea id="textarea" placeholder="What's the news?" rows="5" cols="50" maxlength="250"></textarea>
                             <input type="submit" id="submit">
                         </form>

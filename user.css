@@ -16,21 +16,7 @@ main,footer{
 }
 
 .bootstrap-sign-in{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 35vh;
-    font-family: 'Lora';
-}
-
-.col-12{
-    display: flex;
-    justify-content: center;
-    padding: 5%;
-}
-
-h1{
-    font-family: 'Great Vibes', cursive;
+    padding-top: 0vh !important;
 }
 
 :root{
