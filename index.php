@@ -176,74 +176,7 @@
                             </div>
                         </div>
                     </article>
-
-                    <article class="tag" data-value="tag2">
-                        <h2>post tag2</h2>                    
-                    </article>
-
-                    <article class="tag" data-value="tag1"> <!-- Exemple of post -->
-                        <h2>post tag1</h2>
-                        <p>Le post moins bien</p>
-                        <button class="remove-button">delete <i class="fa fa-trash"></i></button>
-                        <div class="remove">
-                            <div class="remove-border">
-                                <p>Are you sure to delete?</p>
-                                <div class="confirm-button">
-                                    <button class="yes">Yes</button>
-                                    <button class="no">No</button>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="tag" data-value="tag3">
-                        <h2>post title</h2>
-                        <h5>tag3</h5> 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam asperiores cum voluptates doloremque odio saepe!</p>                   
-                    </article>
-
-                    <article class="tag" data-value="tag3">
-                        <h2>post title</h2>
-                        <h5>tag3</h5> 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam asperiores cum voluptates doloremque odio saepe!</p>                   
-                    </article>
-                    <article class="tag" data-value="tag3">
-                        <h2>post title</h2>
-                        <h5>tag3</h5> 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam asperiores cum voluptates doloremque odio saepe!</p>                   
-                    </article>
-                    <article class="tag" data-value="tag3">
-                        <h2>post title</h2>
-                        <h5>tag3</h5> 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam asperiores cum voluptates doloremque odio saepe!</p>                   
-                    </article>
-                    <article class="tag" data-value="tag3">
-                        <h2>post tag3</h2>                    
-                    </article>
-
-                    <article class="tag" data-value="tag3">
-                        <h2>post tag3</h2>                    
-                    </article>
-
-                    <article class="tag" data-value="tag3">
-                        <h2>post tag3</h2>                    
-                    </article>
-
-                    <article class="tag" data-value="tag3">
-                        <h2>post tag3</h2>                    
-                    </article>
-
-                    <article class="tag" data-value="tag3">
-                        <h2>post tag3</h2>                    
-                    </article>
-
-                    <article class="tag" data-value="tag3">
-                        <h2>post tag3</h2>                    
-                    </article>
-
-                    <article class="tag" data-value="tag3">
-                        <h2>post tag3</h2>                    
-                    </article>
+                    
                 </div>
                 <!-- Posts space -->
            
@@ -261,16 +194,11 @@
                             <input type="text" id="title-post" placeholder="title">
                             <select name="select" id="tag-select">
                                 <option data-value="">Select tag</option>
-                                <option data-value="tag1">Tag1</option>
-                                <option data-value="tag2">Tag2</option>
-                                <option data-value="tag3">Tag3</option>
-                                <option data-value="tag4">Tag4</option>
-                                <option data-value="tag5">Tag5</option>
-                                <option data-value="tag6">Tag6</option>
-                                <option data-value="tag7">Tag7</option>
-                                <option data-value="tag8">Tag8</option>
-                                <option data-value="tag9">Tag9</option>
-                                <option data-value="tag10">Tag10</option>
+                                <?php
+                                for ($i = 1; $i <= 10; $i++){
+                                    echo '<option' . 'datavalue='. $i '>' . '</option>'
+                                }
+                                ?>
 
                             </select>
                             <textarea id="textarea" placeholder="What's the news?" rows="5" cols="50" maxlength="250"></textarea>
