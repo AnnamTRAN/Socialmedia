@@ -46,9 +46,26 @@
     margin-left: 10vh;
 }
 
-/*******************************modal**************************/
+/******************************* modal **************************/
 
+/******************************* picture **************************/
 
+.frame{
+    width: 100%;
+    border-radius: 50%;
+    display: none;
+}
+
+#label-file{
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#inputGroupFile01{
+    display: none;
+}
+
+/******************************* picture **************************/
 
 /**************** SMALL SCREEN *************/
 @media only screen and (max-width: 600px){

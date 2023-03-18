@@ -20,7 +20,7 @@
                 <p>You must be connected to view more</p>
                 <div>
                     <form action="signin.html"><button>Sign in</button></form>
-                    <form action="signup.html"><button>Sign up</button></form>
+                    <form action="signup.php"><button>Sign up</button></form>
                 </div>
             </div>
         </div>
@@ -61,10 +61,10 @@
                     <?php
                         for ($i= 1; $i <= 10; $i++){
                             echo '<li>
-                                <div>
-                                <input type="checkbox" data-value="tag' . $i .'" class="checkbox" id="tag' . $i .'" onchange="filter(event)">
-                                <label for="tag' . $i .'" id="label-tag' . $i .'">Tag ' . $i .'</label>
-                                </div>
+                                    <div>
+                                        <input type="checkbox" data-value="tag' . $i .'" class="checkbox" id="tag' . $i .'" onchange="filter(event)">
+                                        <label for="tag' . $i .'" id="label-tag' . $i .'">Tag ' . $i .'</label>
+                                    </div>
                                 </li>';
                         }
                     ?>
@@ -102,22 +102,31 @@
                 <!-- Posts space-->
                 <div id="post">
 
-                    <article class="tag" data-value="tag1">
-                        <h2>post tag1</h2>
-                        <h5>tag3</h5> 
-                        <p>Le post bien</p>
-                        <button class="remove-button">delete <i class="fa fa-trash"></i></button>
-                        <div class="remove">
-                            <div class="remove-border">
-                                <p>Are you sure to delete?</p>
-                                <div class="confirm-button">
-                                    <button class="yes">Yes</button>
-                                    <button class="no">No</button>
+                    <?php require_once 'php/connect.php';
+                        $users = $database->query('SELECT * FROM meow ORDER BY time DESC');
+                        foreach ($users as $user): ?>
+
+                        <article class="tag" data-value="<?=$user['tag']?>">
+                            <h2><?=$user['title'];?></h2>
+                            <h5><?=$user['tag'];?></h5> 
+                            <p><?=$user['content'];?></p>
+                            <p><?=$user['time'];?></p>
+                            <button class="remove-button">delete <i class="fa fa-trash"></i></button>
+                            <div class="remove">
+                                <div class="remove-border">
+                                    <p>Are you sure to delete?</p>
+                                    <div class="confirm-button">
+                                        <form action="php/delete.php" method="post" enctype="multipart/form-data">
+                                            <input type="hidden" name="form" value="delete">
+                                            <button type="submit" class="yes" name ="delete" value="<?=$user['id'];?>">Yes</button>
+                                        </form>
+                                        <button class="no">No</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                    
+                        </article>
+
+                    <?php endforeach; ?>
                 </div>
                 <!-- Posts space -->
            
@@ -131,18 +140,24 @@
                 <div id="modal">
                     <div id="modal-border">
 
-                        <form class="modal-content">
-                            <input type="text" id="title-post" placeholder="title">
-                            <select name="select" id="tag-select">
-                                <option data-value="">Select tag</option>
+                        <form class="modal-content" action="php/new_meow.php" method="post">
+                            <input type="hidden" name="form" value="meow">
+                            <input type="text" name="post_title" id="title-post" placeholder="title" maxlength="32" required>
+                            <select name="post_select" id="tag-select" required>
+                                <option name="">Select tag</option>
                                 <?php
                                 for ($i = 1; $i <= 10; $i++){
-                                    echo '<option datavalue="'. $i .'">tag' . $i . '</option>';
+                                    echo '<option data-value="tag'. $i .'">tag' . $i . '</option>';
                                 }
                                 ?>
                             </select>
 
-                            <textarea id="textarea" placeholder="What's the news?" rows="5" cols="50" maxlength="250"></textarea>
+                            <img src="" class="frame" alt="placeholder/profilepreview">
+                            <div>
+                                <label for="inputGroupFile01" class="form-control label-file">Edit pic</label>
+                                <input type="file" name="post_profile" accept=".png, .jpg, .gif" id="inputGroupFile01" placeholder="Edit picture" onchange="preview(event)" required>
+                            </div>
+                            <textarea id="textarea" name="post_content" placeholder="What's the news?" rows="5" cols="50" maxlength="250"></textarea>
                             <input type="submit" id="submit">
                         </form>
 

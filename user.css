@@ -1,5 +1,6 @@
 @import url(css/navbar.css);
 @import url(css/banner.css);
+@import url(css/modal.css);
 
 
 body{
@@ -16,7 +17,16 @@ main,footer{
 }
 
 .bootstrap-sign-in{
-    padding-top: 0vh !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5vh;
+}
+
+.col-12{
+    display: flex;
+    justify-content: center;
+    padding: 5%;
 }
 
 :root{
