@@ -137,7 +137,7 @@ navbar.addEventListener('touchmove',(ev)=>{
 /************************************* PIC PREVIEW BOOSTRAP ************************/
 
 const preview = (event) =>{
-    const frame = document.getElementById('frame')
+    const frame = document.querySelector('.frame')
     frame.src = URL.createObjectURL(event.target.files[0])
     frame.style.display = "block"
 }

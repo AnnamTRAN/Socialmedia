@@ -110,6 +110,7 @@
                             <h2><?=$user['title'];?></h2>
                             <h5><?=$user['tag'];?></h5> 
                             <p><?=$user['content'];?></p>
+                            <img src="post_pic/<?=$user['pic'];?>">
                             <p><?=$user['time'];?></p>
                             <button class="remove-button">delete <i class="fa fa-trash"></i></button>
                             <div class="remove">
@@ -140,7 +141,7 @@
                 <div id="modal">
                     <div id="modal-border">
 
-                        <form class="modal-content" action="php/new_meow.php" method="post">
+                        <form class="modal-content" action="php/new_meow.php" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="form" value="meow">
                             <input type="text" name="post_title" id="title-post" placeholder="title" maxlength="32" required>
                             <select name="post_select" id="tag-select" required>
@@ -152,11 +153,14 @@
                                 ?>
                             </select>
 
-                            <img src="" class="frame" alt="placeholder/profilepreview">
+                            <div id="post_pic">
+                                <img src="" class="frame" alt="placeholder/profilepreview">
+                            </div>
                             <div>
                                 <label for="inputGroupFile01" class="form-control label-file">Edit pic</label>
-                                <input type="file" name="post_profile" accept=".png, .jpg, .gif" id="inputGroupFile01" placeholder="Edit picture" onchange="preview(event)" required>
+                                <input type="file" name="post_pic" accept=".png, .jpg, .gif" id="inputGroupFile01" placeholder="Edit picture" onchange="preview(event)" required>
                             </div>
+                            
                             <textarea id="textarea" name="post_content" placeholder="What's the news?" rows="5" cols="50" maxlength="250"></textarea>
                             <input type="submit" id="submit">
                         </form>

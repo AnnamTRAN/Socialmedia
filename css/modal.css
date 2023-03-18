@@ -52,12 +52,26 @@
 /******************************* picture **************************/
 
 .frame{
-    width: 100%;
-    border-radius: 50%;
     display: none;
 }
 
-#label-file{
+#profile_pic{
+    width: 100%;
+    border-radius: 50%;
+}
+
+#post_pic{
+    width: 161px;
+    height: 161px;
+    border: 1px solid black;
+}
+
+#post_pic img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.label-file{
     cursor: pointer;
     margin-bottom: 10px;
 }

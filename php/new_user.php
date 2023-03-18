@@ -1,12 +1,12 @@
 <?php require_once 'connect.php';
 
+    $pic_size = $_FILES['post_profile']['size'];
+    $pic_error = $_FILES['post_profile']['error'];
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['form'] == 'signup'){
-        if ($_POST['post_name'] != '' && $_POST['post_username'] != '' && $_POST['post_email'] != '' && $_POST['post_password'] != '' && $pic_size  < 2097152 && $pic_error < 0){
+        if ($_POST['post_name'] != '' && $_POST['post_username'] != '' && $_POST['post_email'] != '' && $_POST['post_password'] != '' && $pic_size  < 2097152 && $pic_error <= 0){
 
             $pic_name = $_FILES['post_profile']['name'];
-            $pic_size = $_FILES['post_profile']['size'];
             $pic_tmp = $_FILES['post_profile']['tmp_name'];
-            $pic_error = $_FILES['post_profile']['error'];
 
             $pic_ex = pathinfo($pic_name, PATHINFO_EXTENSION);
             $pic_ex_lc = strtolower($pic_ex);

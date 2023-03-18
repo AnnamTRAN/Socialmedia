@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+²<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -60,7 +60,7 @@
 
                 <div class="container col-md-6">
                     <div class="input-group mb-3">
-                        <img src="" id="frame" alt="placeholder/profilepreview">
+                        <img src="" class="frame" id ="profile_pic" alt="placeholder/profilepreview">
                     </div>
                     <div>
                         <label for="inputGroupFile01" class="form-control label-file">Edit pic</label>
