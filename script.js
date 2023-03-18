@@ -70,7 +70,6 @@ const Uncheck = () => {
 /*************************************************** POST **************************************************/
 const removeDiv = document.querySelectorAll('.remove')
 const removeButtons = document.querySelectorAll('.remove-button')
-const confirmButtons = document.querySelectorAll('.yes')
 const cancelButtons = document.querySelectorAll('.no')
 const navbar = document.getElementById('navbar')
 
@@ -94,11 +93,6 @@ removeDiv.forEach(div =>{
     })
 })
 
-confirmButtons.forEach(button =>{
-    button.addEventListener('click',()=>{
-        button.parentElement.parentElement.parentElement.parentElement.remove()
-    })
-})
 /************** swipe mobile ver ***************/
 let downX = null
 let downY = null
@@ -140,6 +134,15 @@ navbar.addEventListener('touchmove',(ev)=>{
 
 /*************************************************** POST **************************************************/
 
+/************************************* PIC PREVIEW BOOSTRAP ************************/
+
+const preview = (event) =>{
+    const frame = document.getElementById('frame')
+    frame.src = URL.createObjectURL(event.target.files[0])
+    frame.style.display = "block"
+}
+
+/************************************* PIC PREVIEW BOOSTRAP ************************/
 
 
 /*************************************************** MODAL **************************************************/
@@ -162,6 +165,17 @@ window.onclick = function(event) {
         navbar.style.filter = ""
     }
 }
+
+/************** post + reload page ***************/
+
+const submit = document.getElementById('submit')
+
+submit.addEventListener('click',()=>{
+    localStorage.clear()
+    location.reload()
+})
+
+/************** post + reload page ***************/
 
 /************** locastorage post ***************/
 const msgstore = document.getElementById('textarea')
@@ -186,7 +200,6 @@ const alertBorder = document.querySelector('#alert-border')
 const mainContent = document.querySelector('#global')
 
 postDiv.addEventListener('scroll',()=>{
-    console.log(postDiv.scrollTop)
     if (postDiv.scrollTop> 0){
         alert.style.display = "block"
         postDiv.style.overflowY = "hidden"
@@ -195,3 +208,6 @@ postDiv.addEventListener('scroll',()=>{
     }
 })
 /************************************* SCROLLING ************************/
+
+
+

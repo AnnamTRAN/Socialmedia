@@ -2,7 +2,7 @@
 #post{
     position: absolute;
     overflow-y: auto;
-    top: 25vh;
+    top: 32vh;
     bottom: 0vh;
     width: 100%;
     z-index: 1;
@@ -139,14 +139,18 @@ div button{
     cursor: pointer;
 }
 
-.tag[data-value="tag1"] h2{
+h2{
+    color: var(--color-title);
+}
+
+.tag[data-value="tag1"] h5{
     color: var(--color-tag1);
 }
 
-.tag[data-value="tag2"] h2{
+.tag[data-value="tag2"] h5{
     color: var(--color-tag2);
 }
 
-.tag[data-value="tag3"] h2{
+.tag[data-value="tag3"] h5{
     color: var(--color-tag3);
 }

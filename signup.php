@@ -19,7 +19,7 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link">
+                    <a href="index.php" class="nav-link">
                         <p>Home</p>
                         <img src="favicon_package_v0.16/favicon-32x32.png" alt="logo"/>
                         <span class="link-text"> Home </span>    
@@ -55,23 +55,41 @@
 
         <div class="bootstrap-sign-in">
             <h1>Sign Up</h1>
-            <form>
+            <form action="php/new_user.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="form" value="signup">
+
+                <div class="container col-md-6">
+                    <div class="input-group mb-3">
+                        <img src="" id="frame" alt="placeholder/profilepreview">
+                    </div>
+                    <div>
+                        <label for="inputGroupFile01" class="form-control label-file">Edit pic</label>
+                        <input type="file" name="post_profile" accept=".png, .jpg, .gif" id="inputGroupFile01" placeholder="Edit picture" onchange="preview(event)" required>
+                    </div>
+                </div>
+
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    <input type="text" name="post_name" class="form-control floatingInput" placeholder="name" required>
+                    <label for="floatingInput">Name</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" name="post_username" class="form-control floatingInput" placeholder="username123" required>
+                    <label for="floatingInput">Username</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="email" name="post_email" class="form-control floatingInput" placeholder="name@example.com" required>
                     <label for="floatingInput">New email address</label>
                 </div>
         
+                
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword1" placeholder="Password">
-                    <label for="floatingPassword1">Password</label>
+                    <input type="password" name ="post_password" class="form-control" placeholder="Password" required>
+                    <label for="floatingPassword">Password</label>
                 </div>
 
                 <br>
-
-                <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword2" placeholder="Password">
-                    <label for="floatingPassword2">Confirm Password</label>
-                </div>  
 
                 <div class="col-12">
                     <button class="btn btn-primary" type="submit">Confirm</button>
@@ -82,7 +100,6 @@
 
 
     <footer>
-
     </footer>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
