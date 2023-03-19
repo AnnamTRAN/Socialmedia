@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +22,7 @@
                 <p>You must be connected to view more</p>
                 <div>
                     <form action="signin.html"><button>Sign in</button></form>
-                    <form action="signup.php"><button>Sign up</button></form>
+                    <form action="signup.html"><button>Sign up</button></form>
                 </div>
             </div>
         </div>
@@ -38,8 +40,14 @@
                 
                 <li class="nav-item">
                     <a href="signin.html" class="nav-link">
-                        <p>Profile</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M272 304h-96C78.8 304 0 382.8 0 480c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32C448 382.8 369.2 304 272 304zM48.99 464C56.89 400.9 110.8 352 176 352h96c65.16 0 119.1 48.95 127 112H48.99zM224 256c70.69 0 128-57.31 128-128c0-70.69-57.31-128-128-128S96 57.31 96 128C96 198.7 153.3 256 224 256zM224 48c44.11 0 80 35.89 80 80c0 44.11-35.89 80-80 80S144 172.1 144 128C144 83.89 179.9 48 224 48z"/></svg>
+                        <?php if (isset($_SESSION['username'])){
+                            echo '<p>'.$_SESSION['username'].'</p>';
+                            echo '<img src="profile_pic/'.$_SESSION['pic'].'" alt="profile_pic">';
+                        } else{
+                        echo '<p>Profile</p>';
+                        echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M272 304h-96C78.8 304 0 382.8 0 480c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32C448 382.8 369.2 304 272 304zM48.99 464C56.89 400.9 110.8 352 176 352h96c65.16 0 119.1 48.95 127 112H48.99zM224 256c70.69 0 128-57.31 128-128c0-70.69-57.31-128-128-128S96 57.31 96 128C96 198.7 153.3 256 224 256zM224 48c44.11 0 80 35.89 80 80c0 44.11-35.89 80-80 80S144 172.1 144 128C144 83.89 179.9 48 224 48z"/></svg>';
+                        }
+                        ?>  
                         <span class="link-text"> Profil </span>
                     </a>
                 </li>
@@ -102,16 +110,16 @@
                 <!-- Posts space-->
                 <div id="post">
 
-                    <?php require_once 'php/connect.php';
-                        $users = $database->query('SELECT * FROM meow ORDER BY time DESC');
+                    <?php require_once 'php/pdo.php';
+                        $users = $database->query('SELECT * FROM meow ORDER BY meow_time DESC');
                         foreach ($users as $user): ?>
 
-                        <article class="tag" data-value="<?=$user['tag']?>">
-                            <h2><?=$user['title'];?></h2>
-                            <h5><?=$user['tag'];?></h5> 
-                            <p><?=$user['content'];?></p>
-                            <img src="post_pic/<?=$user['pic'];?>">
-                            <p><?=$user['time'];?></p>
+                        <article class="tag" data-value="<?=$user['meow_tag']?>">
+                            <h2><?=$user['meow_title'];?></h2>
+                            <h5><?=$user['meow_tag'];?></h5> 
+                            <p><?=$user['meow_content'];?></p>
+                            <img src="post_pic/<?=$user['meow_pic'];?>">
+                            <p><?=$user['meow_time'];?></p>
                             <button class="remove-button">delete <i class="fa fa-trash"></i></button>
                             <div class="remove">
                                 <div class="remove-border">
@@ -119,7 +127,7 @@
                                     <div class="confirm-button">
                                         <form action="php/delete.php" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="form" value="delete">
-                                            <button type="submit" class="yes" name ="delete" value="<?=$user['id'];?>">Yes</button>
+                                            <button type="submit" class="yes" name ="delete" value="<?=$user['meow_id'];?>">Yes</button>
                                         </form>
                                         <button class="no">No</button>
                                     </div>

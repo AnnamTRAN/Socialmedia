@@ -1,4 +1,4 @@
-<?php require_once 'connect.php';
+<?php require_once 'pdo.php';
 
     $pic_size = $_FILES['post_pic']['size'];
     $pic_error = $_FILES['post_pic']['error'];
@@ -22,9 +22,9 @@
                 'send_content' => $_POST['post_content'],
                 'send_pic' => $new_pic_name
             ];
-            $requete = $database->prepare('INSERT INTO meow (title, tag, pic, content, time)
+            $request = $database->prepare('INSERT INTO meow (meow_title, meow_tag, meow_pic, meow_content, meow_time)
                                             VALUES (:send_title, :send_tag, :send_pic, :send_content, now())');
-            if($requete->execute($data)){
+            if($request->execute($data)){
                 header('Location: ../index.php');
             } else{
                 echo 'error';
