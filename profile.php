@@ -100,44 +100,50 @@
                 <div id="post">
                 
                     <?php require_once 'php/pdo.php';
+                        $session = $_SESSION['id'];
                         if(isset($_POST['search'])){
                             $search = $_POST['search'];
-                            $results = $database->prepare('SELECT * FROM meow INNER JOIN user ON meow_userid = user_id WHERE meow_title LIKE :search OR meow_content LIKE :search
+                            $results = $database->prepare('SELECT * FROM meow INNER JOIN user ON meow_userid = user_id WHERE meow_userid = :session AND meow_title LIKE :search OR meow_content LIKE :search
                                                         ORDER BY meow_time DESC');
                             $results->bindValue('search', '%'.$search.'%', PDO::PARAM_STR);
+                            $results->bindValue('session', $session, PDO::PARAM_STR);
                             $results->execute(); 
                             $users = $results->fetchAll();
                         }else{
-                            $users = $database->query('SELECT * FROM meow INNER JOIN user ON meow_userid = user_id ORDER BY meow_time DESC');
+                            $results = $database->prepare('SELECT * FROM meow INNER JOIN user ON meow_userid = user_id WHERE meow_userid = :session ORDER BY meow_time DESC');
+                            $results->bindValue('session', $session, PDO::PARAM_STR);
+                            $results->execute(); 
+                            $users = $results->fetchAll();
                         }
-                        foreach ($users as $user): ?>
 
-                        <article class="tag" data-value="<?=$user['meow_tag']?>">
-                            <h2><?=$user['meow_title'];?></h2>
-                            <h4><?=$user['meow_tag'];?></h4>
-                            <h5><?=$user['user_username'];?></h5>  
-                            <p><?=$user['meow_content'];?></p>
-                            <img src="post_pic/<?=$user['meow_pic'];?>" class="post_img">
-                            <p><?=$user['meow_time'];?></p>
-                            <?php if(isset($_SESSION['username'])){
-                                if($_SESSION['id'] == $user['meow_userid'] || $_SESSION['id'] == 1){
-                                    echo '<button class="remove-button">delete <i class="fa fa-trash"></i></button>';
+                            foreach ($users as $user): ?>
+
+                            <article class="tag" data-value="<?=$user['meow_tag']?>">
+                                <h2><?=$user['meow_title'];?></h2>
+                                <h4><?=$user['meow_tag'];?></h4>
+                                <h5><?=$user['user_username'];?></h5>  
+                                <p><?=$user['meow_content'];?></p>
+                                <img src="post_pic/<?=$user['meow_pic'];?>" class="post_img">
+                                <p><?=$user['meow_time'];?></p>
+                                <?php if(isset($_SESSION['username'])){
+                                    if($_SESSION['id'] == $user['meow_userid'] || $_SESSION['id'] == 1){
+                                        echo '<button class="remove-button">delete <i class="fa fa-trash"></i></button>';
+                                    }
                                 }
-                            }
-                            ?>
-                            <div class="remove">
-                                <div class="remove-border">
-                                    <p>Are you sure to delete?</p>
-                                    <div class="confirm-button">
-                                        <form action="php/delete.php" method="post" enctype="multipart/form-data">
-                                            <input type="hidden" name="form" value="delete">
-                                            <button type="submit" class="yes" name ="delete" value="<?=$user['meow_id'];?>">Yes</button>
-                                        </form>
-                                        <button class="no">No</button>
+                                ?>
+                                <div class="remove">
+                                    <div class="remove-border">
+                                        <p>Are you sure to delete?</p>
+                                        <div class="confirm-button">
+                                            <form action="php/delete.php" method="post" enctype="multipart/form-data">
+                                                <input type="hidden" name="form" value="delete">
+                                                <button type="submit" class="yes" name ="delete" value="<?=$user['meow_id'];?>">Yes</button>
+                                            </form>
+                                            <button class="no">No</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
+                            </article>
 
                     <?php endforeach; ?>
                 </div>
