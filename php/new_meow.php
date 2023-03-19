@@ -20,10 +20,13 @@
                 'send_title' => $_POST['post_title'],
                 'send_tag' => $_POST['post_select'],
                 'send_content' => $_POST['post_content'],
-                'send_pic' => $new_pic_name
+                'send_pic' => $new_pic_name,
+                'send_userid' => intval($_POST['post_userid']),
             ];
-            $request = $database->prepare('INSERT INTO meow (meow_title, meow_tag, meow_pic, meow_content, meow_time)
-                                            VALUES (:send_title, :send_tag, :send_pic, :send_content, now())');
+
+            var_dump($data);
+            $request = $database->prepare('INSERT INTO meow (meow_title, meow_tag, meow_pic, meow_content, meow_time, meow_userid)
+                                            VALUES (:send_title, :send_tag, :send_pic, :send_content, now(), :send_userid)');
             if($request->execute($data)){
                 header('Location: ../index.php');
             } else{

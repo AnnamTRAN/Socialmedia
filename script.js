@@ -81,14 +81,14 @@ removeButtons.forEach(button =>{
 
 cancelButtons.forEach(button =>{
     button.addEventListener('click',()=>{
-        button.closest('.remove').style.visibility = "hidden"
+        button.closest('.remove').style.display = "none"
     })
 })
 
 removeDiv.forEach(div =>{
     div.addEventListener('click',(event)=>{
         if(event.target.style.display === "block"){
-            event.target.style.visibility = "hidden"
+            event.target.style.display = "none"
         }
     })
 })
@@ -157,15 +157,7 @@ window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none"
     }
-    else if (event.target == alert){
-        alert.style.display = "none"
-        postDiv.style.overflowY = "auto"
-        postDiv.scrollTo(0,0)
-        mainContent.style.filter = ""
-        navbar.style.filter = ""
-    }
 }
-
 /************** post + reload page ***************/
 
 const submit = document.getElementById('submit')
@@ -190,24 +182,3 @@ msgstore.addEventListener('keyup',(event) =>{
 
 
 /*************************************************** MODAL **************************************************/
-
-
-
-/************************************* SCROLLING ************************/
-const postDiv = document.querySelector('#post')
-const alert = document.querySelector('#alert')
-const alertBorder = document.querySelector('#alert-border')
-const mainContent = document.querySelector('#global')
-
-postDiv.addEventListener('scroll',()=>{
-    if (postDiv.scrollTop> 0){
-        alert.style.display = "block"
-        postDiv.style.overflowY = "hidden"
-        mainContent.style.filter = "blur(4px)"
-        navbar.style.filter = "blur(4px)"
-    }
-})
-/************************************* SCROLLING ************************/
-
-
-

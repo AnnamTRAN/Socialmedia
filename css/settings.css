@@ -1,0 +1,13 @@
+#options{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#logout{
+    color: #514438;
+    text-decoration: none;
+    font-size: 2rem;
+}

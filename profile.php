@@ -2,14 +2,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MeowChat</title>
+    <title>SignIn/MeowChat</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Lora&display=swap" rel="stylesheet">
@@ -17,21 +15,12 @@
 </head>
 <body>
     <header>
-        <div id="alert">
-            <div id="alert-border">
-                <p>You must be connected to view more</p>
-                <div>
-                    <form action="signin.html"><button>Sign in</button></form>
-                    <form action="signup.html"><button>Sign up</button></form>
-                </div>
-            </div>
-        </div>
         <!-- SIDE NAVBAR -->
         <nav id="navbar">
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="index.php" class="nav-link">
                         <p>Home</p>
                         <img class="icon" src="favicon_package_v0.16/favicon-32x32.png" alt="logo"/>
                         <span class="link-text"> Home </span>    
@@ -82,9 +71,6 @@
             </div>
         </nav>
         <!-- SIDE NAVBAR -->
-
-
-        
     </header>
 
 
@@ -100,9 +86,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M272 304h-96C78.8 304 0 382.8 0 480c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32C448 382.8 369.2 304 272 304zM48.99 464C56.89 400.9 110.8 352 176 352h96c65.16 0 119.1 48.95 127 112H48.99zM224 256c70.69 0 128-57.31 128-128c0-70.69-57.31-128-128-128S96 57.31 96 128C96 198.7 153.3 256 224 256zM224 48c44.11 0 80 35.89 80 80c0 44.11-35.89 80-80 80S144 172.1 144 128C144 83.89 179.9 48 224 48z"/></svg>
                     </button>
 
-                    <h1>MeowChat</h1>
-
-
+                    <?='<h1>'.$_SESSION['username'].'</h1>';?>
 
                 </div>
                 <!-- Banner -->
@@ -118,20 +102,20 @@
                     <?php require_once 'php/pdo.php';
                         if(isset($_POST['search'])){
                             $search = $_POST['search'];
-                            $results = $database->prepare('SELECT * FROM meow LEFT JOIN user ON meow_userid = user_id WHERE meow_title LIKE :search OR meow_content LIKE :search
+                            $results = $database->prepare('SELECT * FROM meow INNER JOIN user ON meow_userid = user_id WHERE meow_title LIKE :search OR meow_content LIKE :search
                                                         ORDER BY meow_time DESC');
                             $results->bindValue('search', '%'.$search.'%', PDO::PARAM_STR);
                             $results->execute(); 
                             $users = $results->fetchAll();
                         }else{
-                            $users = $database->query('SELECT * FROM meow LEFT JOIN user ON meow_userid = user_id ORDER BY meow_time DESC');
+                            $users = $database->query('SELECT * FROM meow INNER JOIN user ON meow_userid = user_id ORDER BY meow_time DESC');
                         }
                         foreach ($users as $user): ?>
 
                         <article class="tag" data-value="<?=$user['meow_tag']?>">
                             <h2><?=$user['meow_title'];?></h2>
                             <h4><?=$user['meow_tag'];?></h4>
-                            <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><?=$user['user_username'];?></a>  
+                            <h5><?=$user['user_username'];?></h5>  
                             <p><?=$user['meow_content'];?></p>
                             <img src="post_pic/<?=$user['meow_pic'];?>" class="post_img">
                             <p><?=$user['meow_time'];?></p>
@@ -161,66 +145,13 @@
            
             </div>
             <!-- MAIN CONTENT -->
-
-            
-            <!-- TREND SIDE -->
-            <div id="trend">
-
-                <div id="modal">
-                    <div id="modal-border">
-
-                        <form class="modal-content" action="php/new_meow.php" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="form" value="meow">
-                            <input type="hidden" name="post_userid" value="<?= $_SESSION['id']; ?>">
-                            <input type="text" name="post_title" id="title-post" placeholder="title" maxlength="32" required>
-                            <select name="post_select" id="tag-select" required>
-                                <option name="">Select tag</option>
-                                <?php
-                                for ($i = 1; $i <= 10; $i++){
-                                    echo '<option data-value="tag'. $i .'">tag' . $i . '</option>';
-                                }
-                                ?>
-                            </select>
-
-                            <div id="post_pic">
-                                <img src="" class="frame" alt="placeholder/profilepreview">
-                            </div>
-                            <div>
-                                <label for="inputGroupFile01" class="form-control label-file">Edit pic</label>
-                                <input type="file" name="post_pic" accept=".png, .jpg, .gif" id="inputGroupFile01" placeholder="Edit picture" onchange="preview(event)" required>
-                            </div>
-                            
-                            <textarea id="textarea" name="post_content" placeholder="What's the news?" rows="5" cols="50" maxlength="250"></textarea>
-                            <input type="submit" id="submit">
-                        </form>
-
-                    </div>                    
-                </div>
-                <?php if(isset($_SESSION['username'])){
-                    echo '
-                    <div class="trend-item">
-                        <a href="#" id="modal-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
-                        </a>
-                    </div>
-                    ';}
-
-                ?>
-
-            </div>
-            <!-- TREND SIDE -->
-
-        </div>       
+        </div>
     </main>
 
 
     <footer>
-
+        
     </footer>
-    <?php if(!isset($_SESSION['username'])){
-        echo '<script src="js/scroll.js"></script>';
-    }?>
     <script src="script.js"></script>
 </body>
-
 </html>

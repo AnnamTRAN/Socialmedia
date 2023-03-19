@@ -1,5 +1,5 @@
 <?php require_once 'pdo.php';
-
+    session_start();
     $pic_size = $_FILES['post_profile']['size'];
     $pic_error = $_FILES['post_profile']['error'];
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['form'] == 'signup'){
@@ -32,7 +32,7 @@
                                                 VALUES (:send_name, :send_username, :send_email, :send_password, :send_pic)');
 
             if ($request->execute($data)){
-                echo 'User added';
+                header('Location: ../signin.html');
             } else{
                 echo 'User error';
             }

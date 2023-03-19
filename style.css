@@ -3,6 +3,8 @@
 @import url(css/filter.css);
 @import url(css/modal.css);
 @import url(css/post.css);
+@import url(css/settings.css);
+@import url(css/searchbar.css);
 
 *{
     margin: 0;
