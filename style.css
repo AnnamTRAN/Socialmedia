@@ -18,7 +18,7 @@ body{
 
 /*space for navbar*/
 main,footer{
-    margin-left: 10rem;
+    margin-left: 12rem;
     min-width: 0;
 }
 /*space for navbar*/
@@ -32,6 +32,15 @@ main,footer{
 #global{
     display:grid;
     grid-template-columns: 75% 25%;
+}
+
+.button{
+    padding: 2vh 2vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Lora';
 }
 
 /*************** LARGE SCREEN *************/
@@ -72,8 +81,8 @@ main,footer{
     --color-tag9:#3288bd;
     --color-tag10:#5e4fa2;
 
-    --color-bg: #CEB195;
-    --color-title: #578B82;
+    --color-bg: #1d1e26;
+    --color-title: #6e2545;
 }
 
 /**************** VARIABLES *************/

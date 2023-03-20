@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MeowChat</title>
+    <script src="https://kit.fontawesome.com/5f8af95b13.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,8 +22,8 @@
             <div id="alert-border">
                 <p>You must be connected to view more</p>
                 <div>
-                    <form action="signin.html"><button>Sign in</button></form>
-                    <form action="signup.html"><button>Sign up</button></form>
+                    <form action="signin.html"><button class="button">Sign in</button></form>
+                    <form action="signup.html"><button class="button">Sign up</button></form>
                 </div>
             </div>
         </div>
@@ -109,7 +110,7 @@
 
                 <form method="post" action="" id="searchbar-box">
                     <input type="text" name="search" id="searchbar-text" placeholder="Search Meow">
-                    <input type="submit" value="Reset" id="searchbar-button">
+                    <button type="submit" id="searchbutton"><i class="fa-sharp fa-solid fa-arrow-rotate-right"></i></button>
                 </form>
 
                 <!-- Posts space-->
@@ -137,7 +138,7 @@
                             <p><?=$user['meow_time'];?></p>
                             <?php if(isset($_SESSION['username'])){
                                 if($_SESSION['id'] == $user['meow_userid'] || $_SESSION['id'] == 1){
-                                    echo '<button class="remove-button">delete <i class="fa fa-trash"></i></button>';
+                                    echo '<button class="remove-button">delete <i class="fa-solid fa-trash-can"></i></button>';
                                 }
                             }
                             ?>
@@ -147,9 +148,9 @@
                                     <div class="confirm-button">
                                         <form action="php/delete.php" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="form" value="delete">
-                                            <button type="submit" class="yes" name ="delete" value="<?=$user['meow_id'];?>">Yes</button>
+                                            <button class="button" type="submit" class="yes" name ="delete" value="<?=$user['meow_id'];?>">Yes</button>
                                         </form>
-                                        <button class="no">No</button>
+                                        <button class="no button">No</button>
                                     </div>
                                 </div>
                             </div>
@@ -200,7 +201,7 @@
                     echo '
                     <div class="trend-item">
                         <a href="#" id="modal-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64h96v80c0 6.1 3.4 11.6 8.8 14.3s11.9 2.1 16.8-1.5L309.3 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64z"/></svg>
                         </a>
                     </div>
                     ';}

@@ -45,6 +45,16 @@
 #modal-link svg{
     width: 8vh;
     margin-left: 10vh;
+    animation: newmeow 1s infinite alternate;
+}
+
+@keyframes neowmeow {
+    from{
+        filter: invert(51%) sepia(100%) saturate(405%) hue-rotate(104deg) brightness(103%) contrast(87%);
+    }
+    to{
+        filter: invert(12%) sepia(100%) saturate(4689%) hue-rotate(327deg) brightness(87%) contrast(91%);    
+    }
 }
 
 /******************************* modal **************************/

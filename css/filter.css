@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
 #filter{
@@ -10,8 +11,6 @@
     align-items: center;
     width: 100%;
     user-select: none;
-    background-color: #514438;
-    border-radius: 10px;
 }
 
 #uncheck{
@@ -40,8 +39,6 @@
     width: 20px;
     margin-left: 2vh;
 }
-
-
 
 #label-tag1{
     color: var(--color-tag1);

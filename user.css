@@ -16,6 +16,15 @@ main,footer{
     margin-left: 5rem;
 }
 
+.button{
+    padding: 2vh 2vh;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Lora';
+}
+
 .bootstrap-sign-in{
     display: flex;
     flex-direction: column;
