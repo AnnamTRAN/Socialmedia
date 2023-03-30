@@ -8,7 +8,7 @@
 
 #filter{
     list-style-type: none;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     user-select: none;
 }
@@ -19,13 +19,14 @@
     border-radius: 15px;
     margin-top: 25px;
     margin-bottom: 25px;
-    padding: 15px 15px;
+    padding: 15px;
     cursor: pointer;
     border-color: #578B82;
     background-color: #8BC0B7;
     color: #FFFFFA;
     transition: all 0.3s ease;
 }
+
 #uncheck:hover{
     transform: translateY(-3px);
     color: #333138;
@@ -111,7 +112,7 @@
 @media only screen and (min-width: 600px){
     #filter{
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
     }
 }
 /*************** LARGE SCREEN *************/
@@ -121,7 +122,7 @@
 @media only screen and (max-width: 600px){
     #filter{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
 }
 /*************** SMALL SCREEN *************/

@@ -70,11 +70,13 @@
 
                 <ul id="filter">
                     <?php
-                        for ($i= 1; $i <= 10; $i++){
+                        $tags = ['gaming','politics','cat','meme','technology',
+                        'entertainment','food','school','anime','music'];
+                        for ($i= 1; $i < 10; $i++){
                             echo '<li>
                                     <div>
                                         <input type="checkbox" data-value="tag' . $i .'" class="checkbox" id="tag' . $i .'" onchange="filter(event)">
-                                        <label for="tag' . $i .'" id="label-tag' . $i .'">Tag ' . $i .'</label>
+                                        <label for="tag' . $i .'" id="label-tag' . $i .'">#'.$tags[$i].'</label>
                                     </div>
                                 </li>';
                         }
@@ -130,12 +132,15 @@
                         foreach ($users as $user): ?>
 
                         <article class="tag" data-value="<?=$user['meow_tag']?>">
+                            <img class="post_pic" src="post_pic/<?=$user['meow_pic'];?>" class="post_img">
                             <h2><?=$user['meow_title'];?></h2>
+                            <div>
+                            <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><img class="profile_pic" src="profile_pic/<?=$user['user_pic'];?>" alt="profile_user"></a>
+                                <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><?=$user['user_username'];?></a>  
+                            </div>
                             <h4><?=$user['meow_tag'];?></h4>
-                            <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><?=$user['user_username'];?></a>  
-                            <p><?=$user['meow_content'];?></p>
-                            <img src="post_pic/<?=$user['meow_pic'];?>" class="post_img">
-                            <p><?=$user['meow_time'];?></p>
+                            <p class="meow_content"><?=$user['meow_content'];?></p>
+                            <p class="meow_time"><?=$user['meow_time'];?></p>
                             <?php if(isset($_SESSION['username'])){
                                 if($_SESSION['id'] == $user['meow_userid'] || $_SESSION['id'] == 1){
                                     echo '<button class="remove-button">delete <i class="fa-solid fa-trash-can"></i></button>';
@@ -148,14 +153,14 @@
                                     <div class="confirm-button">
                                         <form action="php/delete.php" method="post" enctype="multipart/form-data">
                                             <input type="hidden" name="form" value="delete">
-                                            <button class="button" type="submit" class="yes" name ="delete" value="<?=$user['meow_id'];?>">Yes</button>
+                                            <button class="yes button" type="submit" name ="delete" value="<?=$user['meow_id'];?>">Yes</button>
                                         </form>
                                         <button class="no button">No</button>
                                     </div>
                                 </div>
                             </div>
                         </article>
-
+                        <?='<br>'?>
                     <?php endforeach; ?>
                 </div>
                 <!-- Posts space -->
@@ -173,15 +178,15 @@
                         <form class="modal-content" action="php/new_meow.php" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="form" value="meow">
                             <input type="hidden" name="post_userid" value="<?= $_SESSION['id']; ?>">
-                            <input type="text" name="post_title" id="title-post" placeholder="title" maxlength="32" required>
+                            <input type="text" class="input-text" name="post_title" id="title-post" autocomplete="off" placeholder="title" maxlength="32" size="32" required>
                             <select name="post_select" id="tag-select" required>
-                                <option name="">Select tag</option>
                                 <?php
-                                for ($i = 1; $i <= 10; $i++){
-                                    echo '<option data-value="tag'. $i .'">tag' . $i . '</option>';
+                                for ($i = 1; $i < 10; $i++){
+                                    echo '<option data-value="tag'. $i .'">#' .$tags[$i]. '</option>';
                                 }
                                 ?>
                             </select>
+                            <br>
 
                             <div id="post_pic">
                                 <img src="" class="frame" alt="placeholder/profilepreview">
@@ -190,8 +195,8 @@
                                 <label for="inputGroupFile01" class="form-control label-file">Edit pic</label>
                                 <input type="file" name="post_pic" accept=".png, .jpg, .gif" id="inputGroupFile01" placeholder="Edit picture" onchange="preview(event)" required>
                             </div>
-                            
-                            <textarea id="textarea" name="post_content" placeholder="What's the news?" rows="5" cols="50" maxlength="250"></textarea>
+                            <br>
+                            <textarea class="input-text " id="textarea" name="post_content" placeholder="What's the news?" rows="5" cols="50" maxlength="250"></textarea>
                             <input type="submit" id="submit">
                         </form>
 
