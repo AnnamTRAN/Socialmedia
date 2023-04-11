@@ -70,9 +70,9 @@
 
                 <ul id="filter">
                     <?php
-                        $tags = ['gaming','politics','cat','meme','technology',
+                        $tags = ['','gaming','politics','cat','meme','technology',
                         'entertainment','food','school','anime','music'];
-                        for ($i= 1; $i < 10; $i++){
+                        for ($i= 1; $i <= 10; $i++){
                             echo '<li>
                                     <div>
                                         <input type="checkbox" data-value="tag' . $i .'" class="checkbox" id="tag' . $i .'" onchange="filter(event)">
@@ -132,15 +132,21 @@
                         foreach ($users as $user): ?>
 
                         <article class="tag" data-value="<?=$user['meow_tag']?>">
-                            <img class="post_pic" src="post_pic/<?=$user['meow_pic'];?>" class="post_img">
-                            <h2><?=$user['meow_title'];?></h2>
-                            <div>
-                            <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><img class="profile_pic" src="profile_pic/<?=$user['user_pic'];?>" alt="profile_user"></a>
-                                <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><?=$user['user_username'];?></a>  
+                            <div class="div-post_pic">
+                                <img class="post_pic" src="post_pic/<?=$user['meow_pic'];?>" class="post_img">
                             </div>
-                            <h4><?=$user['meow_tag'];?></h4>
-                            <p class="meow_content"><?=$user['meow_content'];?></p>
-                            <p class="meow_time"><?=$user['meow_time'];?></p>
+
+                            <div>                   
+                                <h2><?=$user['meow_title'];?></h2>
+                                <div>
+                                    <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><img class="profile_pic" src="profile_pic/<?=$user['user_pic'];?>" alt="profile_user"></a>
+                                    <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><?=$user['user_username'];?></a>  
+                                </div>
+                                <h4><?=$user['meow_tag'];?></h4>
+                                <p class="meow_content"><?=$user['meow_content'];?></p>
+                                <p class="meow_time"><?=$user['meow_time'];?></p>
+                            </div>
+
                             <?php if(isset($_SESSION['username'])){
                                 if($_SESSION['id'] == $user['meow_userid'] || $_SESSION['id'] == 1){
                                     echo '<button class="remove-button">delete <i class="fa-solid fa-trash-can"></i></button>';
@@ -181,7 +187,7 @@
                             <input type="text" class="input-text" name="post_title" id="title-post" autocomplete="off" placeholder="title" maxlength="32" size="32" required>
                             <select name="post_select" id="tag-select" required>
                                 <?php
-                                for ($i = 1; $i < 10; $i++){
+                                for ($i = 1; $i <= 10; $i++){
                                     echo '<option data-value="tag'. $i .'">#' .$tags[$i]. '</option>';
                                 }
                                 ?>

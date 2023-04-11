@@ -6,9 +6,23 @@
     z-index: 1;
     max-width: 12rem;
     width: 100%;
-    margin-top: 10vh;
+    height: 100%;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
+#navbar::-webkit-scrollbar{
+    width: 0.25rem;
+}
+
+#navbar::-webkit-scrollbar-track{
+    background: #2E2F2F;
+}
+
+#navbar::-webkit-scrollbar-thumb{
+    background: #CDDDDD;
+}
 
 .nav-item{
     width: 100%;
@@ -24,7 +38,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
 }  
 
 .nav-link{
@@ -32,7 +45,7 @@
     align-items: center;
     text-decoration: none;
     color: #ddddde;
-    font-size: 80%;
+    font-size: 2rem;
 }
 
 #box_profile{
