@@ -2,15 +2,21 @@
 const tags = document.querySelectorAll('.tag')
 let slctdElements = new Set()   /*set for displayed tags only*/
 let hiddenElements  = new Set() /*set for hidden tags only*/
+const root = document.querySelector(':root')
 
 const filter = (event) => {
     const evnt = event.target
-     
+    let label = evnt.nextElementSibling.closest('label')
+    let computelabel = window.getComputedStyle(label)
+    let labelColor = computelabel.getPropertyValue('color')
+    
     if (evnt.checked){ /*checked*/
-        tags.forEach(tag =>{ /*verify each post's tag if match with checkbox tag*/
+    tags.forEach(tag =>{ /*verify each post's tag if match with checkbox tag*/
+            console.log(labelColor)
             if (evnt.getAttribute('data-value') === tag.getAttribute('data-value')){ /*if same value add to slctedElements */
                 hiddenElements.delete(tag)
                 slctdElements.add(tag)
+                root.style.setProperty('--color-grey', labelColor)
             }
             else if(slctdElements.has(tag)){ /*if another checkbox checked show his tags*/
                 tag.style.display = "block"
@@ -26,14 +32,12 @@ const filter = (event) => {
             if (evnt.getAttribute('data-value') === tag.getAttribute('data-value')){ /*if uncheck and other checkboxes checked -> hide*/
                 slctdElements.delete(tag)
                 hiddenElements.add(tag)
-                console.log(slctdElements)
             }
         })
     }
 
     slctdElements.forEach(element =>{
         element.style.display = "block"
-        element.style.backgroundColor = "#FFB6C1"
     })
 
     hiddenElements.forEach(element =>{
@@ -41,9 +45,9 @@ const filter = (event) => {
     })
 
     if (slctdElements.size === 0){ /* "reset" posts display*/
+        root.style.setProperty('--color-grey', 'whitesmoke')
         hiddenElements.forEach(element =>{
             element.style.display = "block"
-            element.style.backgroundColor = ""
         })   
         hiddenElements.clear()
     }
@@ -53,10 +57,10 @@ const Uncheck = () => {
     const filters = document.querySelectorAll('input[type="checkbox"]');
     slctdElements.clear()
     hiddenElements.clear()
+    root.style.setProperty('--color-grey', 'whitesmoke')
 
     tags.forEach(tag =>{
         tag.style.display = "block"            
-        tag.style.backgroundColor = ""
     })
 
     filters.forEach(filter =>{
@@ -130,8 +134,6 @@ navbar.addEventListener('touchmove',(ev)=>{
 /************** swipe mobile ver ***************/
 
 
-
-
 /*************************************************** POST **************************************************/
 
 /************************************* PIC PREVIEW BOOSTRAP ************************/
@@ -160,9 +162,9 @@ window.onclick = function(event) {
 }
 /************** post + reload page ***************/
 
-const submit = document.getElementById('submit')
+const formsubmit = document.getElementsByClassName('modal-content')
 
-submit.addEventListener('click',()=>{
+formsubmit.addEventListener('onsubmit',()=>{
     localStorage.clear()
     location.reload()
 })
@@ -178,7 +180,6 @@ msgstore.addEventListener('keyup',(event) =>{
     localStorage.setItem('txt',txt)
 })
 /************** locastorage post ***************/
-
 
 
 /*************************************************** MODAL **************************************************/

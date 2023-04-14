@@ -113,15 +113,33 @@
     position: relative;
     margin: 0 auto;
     padding: 2rem;
-    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     width: 75%;
-    background: linear-gradient(180deg, rgba(29,30,38,1) 10%, rgba(23,23,26,1) 100%);
+    background: #34343A;
 }
 
 .div-post_pic{
     display: flex;
     justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.top-post{
+    display: flex;
+    justify-content: space-between;
+}
+
+.title{
+    display: flex;
+    align-items: flex-end;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .remove-button{
@@ -130,10 +148,11 @@
     right: 0;
     display: flex;
     align-items: center;
+    border: none;
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
-    background-color: #6e2545;
+    background-color: var(--color-title);
     font-family: 'Lora';
     cursor: pointer;
 }
@@ -182,48 +201,114 @@ a:hover{
 }
 
 .meow_time{
-    margin-top: auto;
     font-style: italic;
     color: rgb(113, 118, 123);
 }
 
+.tag[data-value="#gaming"]{
+    border-left: 3px solid var(--color-tag1);
+}
 
-.tag[data-value="tag1"] h4{
+.tag[data-value="#gaming"] h4{
     color: var(--color-tag1);
 }
 
-.tag[data-value="tag2"] h4{
+.tag[data-value="#politics"]{
+    border-left: 3px solid var(--color-tag2);
+}
+
+.tag[data-value="#politics"] h4{
     color: var(--color-tag2);
 }
 
-.tag[data-value="tag3"] h4{
+.tag[data-value="#cat"]{
+    border-left: 3px solid var(--color-tag3);
+}
+
+
+.tag[data-value="#cat"] h4{
     color: var(--color-tag3);
 }
 
-.tag[data-value="tag4"] h4{
+.tag[data-value="#meme"]{
+    border-left: 3px solid var(--color-tag4);
+}
+
+
+.tag[data-value="#meme"] h4{
     color: var(--color-tag4);
 }
 
-.tag[data-value="tag5"] h4{
+.tag[data-value="#technology"]{
+    border-left: 3px solid var(--color-tag5);
+}
+
+.tag[data-value="#technology"] h4{
     color: var(--color-tag5);
 }
 
-.tag[data-value="tag6"] h4{
+.tag[data-value="#entertainment"]{
+    border-left: 3px solid var(--color-tag6);
+}
+
+.tag[data-value="#entertainment"] h4{
     color: var(--color-tag6);
 }
 
-.tag[data-value="tag7"] h4{
+.tag[data-value="#food"]{
+    border-left: 3px solid var(--color-tag7);
+}
+
+.tag[data-value="#food"] h4{
     color: var(--color-tag7);
 }
 
-.tag[data-value="tag8"] h4{
+.tag[data-value="#school"]{
+    border-left: 3px solid var(--color-tag8);
+}
+
+
+.tag[data-value="#school"] h4{
     color: var(--color-tag8);
 }
 
-.tag[data-value="tag9"] h4{
+.tag[data-value="#anime"]{
+    border-left: 3px solid var(--color-tag9);
+}
+
+
+.tag[data-value="#anime"] h4{
     color: var(--color-tag9);
 }
 
-.tag[data-value="tag10"] h4{
+.tag[data-value="#music"]{
+    border-left: 3px solid var(--color-tag10);
+}
+
+
+.tag[data-value="#music"] h4{
     color: var(--color-tag10);
 }
+
+/**************** SMALL SCREEN *************/
+@media only screen and (max-width: 600px){
+    #post{    
+        top: 20vh;
+        bottom: 15vh;
+    }
+
+    .tag{
+        width: 75%;
+    }
+    .tag h2{
+        font-size: 2rem;
+    }
+    .tag h4{
+        font-size: smaller;
+    }
+
+    .meow_time{
+        font-size: smaller;
+    }
+}
+/**************** SMALL SCREEN *************/

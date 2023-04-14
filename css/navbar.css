@@ -1,3 +1,5 @@
+@import url(../style.css);
+
 #navbar{
     position: fixed;
     transition: transform 0.5s ease;
@@ -13,7 +15,7 @@
 }
 
 #navbar::-webkit-scrollbar{
-    width: 0.25rem;
+        width: 0.25rem;
 }
 
 #navbar::-webkit-scrollbar-track{
@@ -21,44 +23,38 @@
 }
 
 #navbar::-webkit-scrollbar-thumb{
-    background: #CDDDDD;
+    background: var(--color-grey);
 }
 
 .nav-item{
     width: 100%;
     display: flex;
     justify-content: center;
-    border-radius: 50px;
 }
 
 .navbar-nav{
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin-top: 1rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
 }  
 
-.nav-link{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #ddddde;
-    font-size: 2rem;
+.nav-link p{
+    display: none;
 }
 
 #box_profile{
     width: 41px;
     height: 41px;
-    border: 1px solid black;
     margin: 1rem;
     margin-right: 0;
+    margin-left: 0;
 }
 
 #box_profile img{
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .link-text{
@@ -70,7 +66,7 @@
 @media only screen and (min-width: 600px){
 
     .nav-link svg{
-        filter: invert(77%) sepia(21%) saturate(222%) hue-rotate(349deg) brightness(86%) contrast(87%);
+        fill: whitesmoke;
         min-width: 2rem;
         margin: 1rem;
     }
@@ -78,7 +74,6 @@
     .icon{
         min-width: 2rem;
         margin: 1rem;
-        margin-right: 0;
     }
 
     .nav-item:hover{
@@ -97,36 +92,32 @@
         z-index: 4;
         height: 100%;
         width: 100%;
-        background-color: rgba(0,0,0,0.4);
+        background-color:#b8a99a80;
         max-width: 100vw;
         margin-top: 0;
     }
 
-    .nav-link p{
-        display: none;
-    }
-
-
-    .nav-link svg{
+    .nav-link svg, .icon{
         min-width: 3rem;
-        margin-top: 3rem;   
+        margin-top: 2rem;   
         margin-right: 2rem;
     }
 
-    .nav-link img{
-        min-width: 3rem;
+    #box_profile{
         margin-top: 3rem;
+        min-width: 3rem;
         margin-right: 2rem;
     }
 
     .nav-item{
         width: 20%;
+        flex-direction: column;
     }
 
     .navbar-nav{
         margin-left: 0;
         border-radius: 0;
-        background-color:rgba(184,169,154, 0.5);
+        flex-direction: column;
     }
 }
 

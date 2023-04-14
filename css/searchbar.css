@@ -16,22 +16,37 @@
     outline: none;
     width: 50%;
     margin: 5px;
+    margin-left: 0;
     margin-right: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
     padding-left: 5px;
     padding-right: 5px;
 }
 
-
 #searchbutton{
-    padding: 10px;
+    padding: 0.6rem;
     border: none;
     border-bottom: 1px solid #ccc9cf;
     background-color: rgba(204,201,207, 0.1);
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
+#searchicon{
+    padding: 0.6rem;
+    border: none;
+    border-bottom: 1px solid #ccc9cf;
+    color: white;
+    background-color: rgba(204,201,207, 0.1);
+}
+
 #searchbutton:hover{
     color: white;
+}
+
+@media only screen and (min-width:1025px){
+    #searchicon{
+        padding: 0.55rem;
+    }
 }

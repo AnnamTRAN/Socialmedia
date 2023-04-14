@@ -75,7 +75,7 @@
                         for ($i= 1; $i <= 10; $i++){
                             echo '<li>
                                     <div>
-                                        <input type="checkbox" data-value="tag' . $i .'" class="checkbox" id="tag' . $i .'" onchange="filter(event)">
+                                        <input type="checkbox" data-value="#' . $tags[$i] .'" id="tag' . $i .'" class="checkbox" onchange="filter(event)">
                                         <label for="tag' . $i .'" id="label-tag' . $i .'">#'.$tags[$i].'</label>
                                     </div>
                                 </li>';
@@ -110,8 +110,9 @@
                 </div>
                 <!-- Banner -->
 
-                <form method="post" action="" id="searchbar-box">
-                    <input type="text" name="search" id="searchbar-text" placeholder="Search Meow">
+                <form method="post" id="searchbar-box">
+                    <i id="searchicon" class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" name="search" id="searchbar-text" placeholder="Search Meow"  autocomplete="off">
                     <button type="submit" id="searchbutton"><i class="fa-sharp fa-solid fa-arrow-rotate-right"></i></button>
                 </form>
 
@@ -132,19 +133,26 @@
                         foreach ($users as $user): ?>
 
                         <article class="tag" data-value="<?=$user['meow_tag']?>">
+                            <div class="top-post">
+                                <div class="title">
+                                    <h2><?=$user['meow_title'];?></h2>
+                                    <h4><?=$user['meow_tag'];?></h4>
+                                </div>
+                                <div class="info">
+                                    <div>
+                                        <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><img class="profile_pic" src="profile_pic/<?=$user['user_pic'];?>" alt="profile_user"></a>
+                                        <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><?=$user['user_username'];?></a>  
+                                    </div>
+                                    <p class="meow_time"><?=$user['meow_time'];?></p>
+                                </div>
+                            </div>
+                            
                             <div class="div-post_pic">
-                                <img class="post_pic" src="post_pic/<?=$user['meow_pic'];?>" class="post_img">
+                                <img class="post_pic" src="post_pic/<?=$user['meow_pic'];?>" alt="post_pic">
                             </div>
 
                             <div>                   
-                                <h2><?=$user['meow_title'];?></h2>
-                                <div>
-                                    <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><img class="profile_pic" src="profile_pic/<?=$user['user_pic'];?>" alt="profile_user"></a>
-                                    <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><?=$user['user_username'];?></a>  
-                                </div>
-                                <h4><?=$user['meow_tag'];?></h4>
                                 <p class="meow_content"><?=$user['meow_content'];?></p>
-                                <p class="meow_time"><?=$user['meow_time'];?></p>
                             </div>
 
                             <?php if(isset($_SESSION['username'])){
@@ -184,8 +192,9 @@
                         <form class="modal-content" action="php/new_meow.php" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="form" value="meow">
                             <input type="hidden" name="post_userid" value="<?= $_SESSION['id']; ?>">
-                            <input type="text" class="input-text" name="post_title" id="title-post" autocomplete="off" placeholder="title" maxlength="32" size="32" required>
+                            <input type="text" id="title-post" class="input-text" name="post_title" autocomplete="off" placeholder="title" maxlength="32" required> 
                             <select name="post_select" id="tag-select" required>
+                                <option value="" disabled selected>Select tag</option>
                                 <?php
                                 for ($i = 1; $i <= 10; $i++){
                                     echo '<option data-value="tag'. $i .'">#' .$tags[$i]. '</option>';
@@ -195,14 +204,14 @@
                             <br>
 
                             <div id="post_pic">
-                                <img src="" class="frame" alt="placeholder/profilepreview">
+                                <img src="#" class="frame" alt="placeholder/profilepreview">
                             </div>
-                            <div>
+                            <div id="editpic">
                                 <label for="inputGroupFile01" class="form-control label-file">Edit pic</label>
-                                <input type="file" name="post_pic" accept=".png, .jpg, .gif" id="inputGroupFile01" placeholder="Edit picture" onchange="preview(event)" required>
+                                <input type="file" name="post_pic" accept=".png, .jpg, .gif" id="inputGroupFile01" onchange="preview(event)" required>
                             </div>
                             <br>
-                            <textarea class="input-text " id="textarea" name="post_content" placeholder="What's the news?" rows="5" cols="50" maxlength="250"></textarea>
+                            <textarea  id="textarea" class="input-text" name="post_content" placeholder="What's the news?" maxlength="250"></textarea>
                             <input type="submit" id="submit">
                         </form>
 
@@ -212,7 +221,7 @@
                     echo '
                     <div class="trend-item">
                         <a href="#" id="modal-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 0C28.7 0 0 28.7 0 64V352c0 35.3 28.7 64 64 64h96v80c0 6.1 3.4 11.6 8.8 14.3s11.9 2.1 16.8-1.5L309.3 416H448c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
                         </a>
                     </div>
                     ';}

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SignIn/MeowChat</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/5f8af95b13.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Lora&display=swap" rel="stylesheet">
@@ -58,12 +59,12 @@
 
                 <ul id="filter">
                     <?php
-                        $tags = ['gaming','politics','cat','meme','technology',
+                        $tags = ['','gaming','politics','cat','meme','technology',
                         'entertainment','food','school','anime','music'];
                         for ($i= 1; $i < 10; $i++){
                             echo '<li>
                                     <div>
-                                        <input type="checkbox" data-value="tag' . $i .'" class="checkbox" id="tag' . $i .'" onchange="filter(event)">
+                                        <input type="checkbox" data-value="#' . $tags[$i] .'" class="checkbox" id="tag' . $i .'" onchange="filter(event)">
                                         <label for="tag' . $i .'" id="label-tag' . $i .'">#'.$tags[$i].'</label>
                                     </div>
                                 </li>';
@@ -93,8 +94,9 @@
                 </div>
                 <!-- Banner -->
 
-                <form method="post" action="" id="searchbar-box">
-                    <input type="text" name="search" id="searchbar-text" placeholder="Search Meow">
+                <form method="post" id="searchbar-box">
+                    <i id="searchicon" class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" name="search" id="searchbar-text" placeholder="Search Meow"  autocomplete="off">
                     <button type="submit" id="searchbutton"><i class="fa-sharp fa-solid fa-arrow-rotate-right"></i></button>
                 </form>
 
@@ -120,15 +122,20 @@
                         foreach ($users as $user): ?>
 
                         <article class="tag" data-value="<?=$user['meow_tag']?>">
-                        <img class="post_pic" src="post_pic/<?=$user['meow_pic'];?>" class="post_img">
-                            <h2><?=$user['meow_title'];?></h2>
-                            <div>
-                            <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><img class="profile_pic" src="profile_pic/<?=$user['user_pic'];?>" alt="profile_user"></a>
-                                <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><?=$user['user_username'];?></a>  
+                            <div class="div-post_pic">
+                                <img class="post_pic" src="post_pic/<?=$user['meow_pic'];?>" class="post_img">
                             </div>
-                            <h4><?=$user['meow_tag'];?></h4>
-                            <p class="meow_content"><?=$user['meow_content'];?></p>
-                            <p class="meow_time"><?=$user['meow_time'];?></p>
+
+                            <div>
+                                <h2><?=$user['meow_title'];?></h2>
+                                <div>
+                                <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><img class="profile_pic" src="profile_pic/<?=$user['user_pic'];?>" alt="profile_user"></a>
+                                    <a href="pseudo.php?pseudo=<?=$user['user_username'];?>"><?=$user['user_username'];?></a>  
+                                </div>
+                                <h4><?=$user['meow_tag'];?></h4>
+                                <p class="meow_content"><?=$user['meow_content'];?></p>
+                                <p class="meow_time"><?=$user['meow_time'];?></p>
+                            </div>
                         </article>
                         <?='<br>'?>
                     <?php endforeach; ?>

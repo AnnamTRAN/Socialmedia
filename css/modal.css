@@ -1,3 +1,5 @@
+@import url(../style.css);
+
 #trend{
     display: flex;
     flex-direction: column;
@@ -6,6 +8,9 @@
 
 .trend-item:last-child{
     margin-top: auto;
+    margin-bottom: 1rem;
+    background-color: #34343A;
+    border-radius: 50%;
 }
 
 /*******************************modal**************************/
@@ -30,7 +35,6 @@
     border-radius: 10px;
     width: 50%;
     height: 80%;   
-    box-shadow: 15px 15px var(--color-grey);  
 }
 
 .modal-content{
@@ -38,14 +42,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-grey);
+    background-color: #6b61617d;
     border-radius: 10px;
     height: 100%;
 }
 
 .input-text{
     resize: none;
-    border-style: hidden;
     border: 1px solid rgba(0,0,0,1);
     background: transparent;
     font-family: 'Lora';
@@ -53,11 +56,15 @@
     margin-bottom: 1rem;
     transition: all 1s ease;
     text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-
 #title-post{
-    font-size: 30px;
+    font-size: larger;
+    width: 100%;
+    color: var(--color-title);
 }
 
 #title-post::placeholder{
@@ -68,8 +75,12 @@
 #tag-select{
     font-size: 20px;
     border-radius: 5px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
     text-align: center;
+}
+
+#textarea{
+    width: 100%;
+    height: 25%;
 }
 
 #textarea::placeholder{
@@ -85,7 +96,6 @@
     font-size: 16px;
     padding: 5px;
     border-radius: 5px;
-    box-shadow: 4px 4px var(--color-grey);
     transition: all 0.3s ease;
 }
 
@@ -94,18 +104,31 @@
     background-color: rgb(33, 132, 33);
 }
 
+#editpic{
+    font-size: 16px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: red;
+}
+
+
 /***********modal-content*********/
 
 #modal-link svg{
-    width: 8vh;
-    margin: 20%;
-    fill: #fff;
+    border: 5px solid var(--color-grey);
+    border-radius: 15px;
+    border-bottom-left-radius: 0;
+    padding: 1rem;
+    width: 3rem;
+    fill: var(--color-grey);
     transition: all 0.2s ease-in-out;
+    transform: scale(.5);
 }
 
 #modal-link:hover svg {
-    fill: #8BC0B7;
-    transform: scale(1.05);
+    fill: var(--color-title);
+    border-color: var(--color-title);
+    transform: scale(.6);
 }
 
 /******************************* modal **************************/
@@ -117,17 +140,23 @@
         position: fixed;
         z-index: 2;
         width: 100vw;
+        height: 15vh;
         bottom: 0;
         flex-direction: row;
         justify-content: center;
+        background-color: #34343A;
     }
 
-    .trend-item{
+    .trend-item:last-child{
         width: 20%;
+        background-color: transparent;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 
     #modal-link svg{
         margin-left: 0;
+        transform: scale(.3);
     }
 }
 /**************** SMALL SCREEN *************/
