@@ -128,10 +128,10 @@
 
                     <?php require_once 'php/pdo.php';
                     if (isset($_POST['search'])) {
-                        $search = $_POST['search'];
+                        $search = $_POST['search']; // research value input from $_POST['search'] = name="search"
                         $results = $database->prepare('SELECT * FROM meow LEFT JOIN user ON meow_userid = user_id WHERE meow_title LIKE :search OR meow_content LIKE :search
                                                         ORDER BY meow_time DESC');
-                        $results->bindValue('search', '%' . $search . '%', PDO::PARAM_STR);
+                        $results->bindValue('search', '%' . $search . '%', PDO::PARAM_STR); // binds $_POST['search'] to 'search' parameter in SQL statement
                         $results->execute();
                         $users = $results->fetchAll();
                     } else {
@@ -191,7 +191,7 @@
 
 
             <!-- TREND SIDE -->
-            <div id="trend">
+            <div id="trend"> 
 
                 <div id="modal">
                     <div id="modal-border">
