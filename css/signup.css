@@ -54,4 +54,9 @@
     display: none;
 }
 
+#error{
+    background-color: red;
+    display: none;
+}
+
 /******************************* picture **************************/

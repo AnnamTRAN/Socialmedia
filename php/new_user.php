@@ -31,9 +31,9 @@
                                                 VALUES (:send_name, :send_username, :send_email, :send_password, :send_pic)');
 
             if ($request->execute($data)){
-                header('Location: ../signin.html');
+                header('Location: ../pages/signin.php');
             } else{
-                echo 'User error';
+                echo 'error user';
             }
         } else{
             echo 'Incomplete form';

@@ -20,7 +20,9 @@
                     $_SESSION['pic'] = $user['user_pic'];
                     header('Location: ../index.php');
                 }
-            }
+            } else{
+                $_SESSION['error'] = 'Wrong Email or Password';
+                header('Location: ../pages/signin.php');}
         } else{
             echo 'please fill required form'; 
         }
