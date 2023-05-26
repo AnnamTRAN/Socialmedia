@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings/MeowChat</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Great+Vibes&family=Lora&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" sizes="16x16" href="favicon_package_v0.16/favicon.ico">
+    <link rel="icon" type="image/x-icon" sizes="16x16" href="../favicon_package_v0.16/favicon.ico">
 </head>
 <body>
     <header>
@@ -21,9 +21,9 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a href="index.php" class="nav-link">
+                    <a href="../index.php" class="nav-link">
                         <p>Home</p>
-                        <img class="icon" src="favicon_package_v0.16/favicon-32x32.png" alt="logo"/>
+                        <img class="icon" src="../favicon_package_v0.16/favicon-32x32.png" alt="logo"/>
                         <span class="link-text"> Home </span>    
                     </a>
                 </li>                
@@ -32,7 +32,7 @@
                         <?php if (isset($_SESSION['username'])){
                             echo '<a href="profile.php" class="nav-link">';
                             echo '<p>'.$_SESSION['username'].'</p>';
-                            echo '<div id="box_profile"><img src="profile_pic/'.$_SESSION['pic'].'" alt="profile_pic"></div>';
+                            echo '<div id="box_profile"><img src="../profile_pic/'.$_SESSION['pic'].'" alt="profile_pic"></div>';
                         } else{
                         echo '<a href="signin.html" class="nav-link">';
                         echo '<p>Profile</p>';
@@ -62,13 +62,13 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M272 304h-96C78.8 304 0 382.8 0 480c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32C448 382.8 369.2 304 272 304zM48.99 464C56.89 400.9 110.8 352 176 352h96c65.16 0 119.1 48.95 127 112H48.99zM224 256c70.69 0 128-57.31 128-128c0-70.69-57.31-128-128-128S96 57.31 96 128C96 198.7 153.3 256 224 256zM224 48c44.11 0 80 35.89 80 80c0 44.11-35.89 80-80 80S144 172.1 144 128C144 83.89 179.9 48 224 48z"/></svg>
         </button>
         <div id="options">
-            <a id="logout" href="php/logout.php">Logout</a>
+            <a id="logout" href="../php/logout.php">Logout</a>
         </div>
     </main>
 
     <footer>
 
     </footer>
-    <script src="script.js"></script>
+    <script src="../JS/script.js"></script>
 </body>
 </html>

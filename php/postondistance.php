@@ -1,4 +1,3 @@
-<!-- Code for microPython to post smth depending on hands distance with machine -->
 <?php require_once 'pdo.php'; 
 
     $data = [

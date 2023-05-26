@@ -102,7 +102,11 @@ let downX = null
 let downY = null
 
 const display = () =>{
-    navbar.style.transform = "translateX(0%)"
+    if (navbar.style.transform == "translateX(0%)"){
+        navbar.style.transform = "translateX(-100%)"
+    } else{
+        navbar.style.transform = "translateX(0%)"
+    }
 }
 
 navbar.addEventListener('touchstart',(ev)=>{
@@ -144,6 +148,11 @@ const preview = (event) =>{
     frame.style.display = "block"
 }
 
+const picFile = document.getElementById('inputGroupFile01')
+const labelFile = document.querySelector('.label-file')
+picFile.addEventListener('invalid', () =>{
+    labelFile.style.backgroundColor = "red"
+})
 /************************************* PIC PREVIEW BOOSTRAP ************************/
 
 
@@ -160,18 +169,8 @@ window.onclick = function(event) {
       modal.style.display = "none"
     }
 }
-/************** post + reload page ***************/
-
-const formsubmit = document.getElementsByClassName('modal-content')
-
-formsubmit.addEventListener('onsubmit',()=>{
-    localStorage.clear()
-    location.reload()
-})
-
-/************** post + reload page ***************/
-
 /************** locastorage post ***************/
+
 const msgstore = document.getElementById('textarea')
 msgstore.value = localStorage.getItem('txt')
 
@@ -179,7 +178,19 @@ msgstore.addEventListener('keyup',(event) =>{
     txt = event.target.value
     localStorage.setItem('txt',txt)
 })
+
 /************** locastorage post ***************/
+
+/************** localstorage clear on post ***************/
+
+const formsubmit = document.getElementsByClassName('modal-content')
+
+formsubmit.addEventListener('onsubmit',()=>{
+    localStorage.clear()
+})
+
+/************** localstorage clear on post ***************/
+
 
 
 /*************************************************** MODAL **************************************************/

@@ -1,11 +1,11 @@
-@import url(css/navbar.css);
-@import url(css/banner.css);
-@import url(css/filter.css);
-@import url(css/modal.css);
-@import url(css/post.css);
-@import url(css/settings.css);
-@import url(css/searchbar.css);
-@import url(css/signup.css);
+@import url(navbar.css);
+@import url(banner.css);
+@import url(filter.css);
+@import url(modal.css);
+@import url(post.css);
+@import url(settings.css);
+@import url(searchbar.css);
+@import url(signup.css);
 
 
 *{

@@ -112,6 +112,7 @@
     overflow: hidden;
     position: relative;
     margin: 0 auto;
+    margin-bottom: 2rem;
     padding: 2rem;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -131,10 +132,7 @@
     justify-content: space-between;
 }
 
-.title{
-    display: flex;
-    align-items: flex-end;
-}
+
 
 .info{
     display: flex;
@@ -157,11 +155,6 @@
     cursor: pointer;
 }
 
-.tag h2{
-    color: var(--color-title);
-    text-align: center;
-    font-size: 3rem;
-}
 
 .post_pic{
     max-width: 28rem;

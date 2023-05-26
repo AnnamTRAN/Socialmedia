@@ -3,7 +3,7 @@
     $pic_size = $_FILES['post_pic']['size'];
     $pic_error = $_FILES['post_pic']['error'];
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['form'] == 'meow'){
-        if ($_POST['post_title'] != '' && $_POST['post_select'] != '' && $pic_size  < 2097152 && $pic_error <= 0){
+        if ($_POST['post_select'] != '' && $pic_size  < 2097152 && $pic_error <= 0){
             
             $pic_name = $_FILES['post_pic']['name'];
             $pic_tmp = $_FILES['post_pic']['tmp_name'];
@@ -17,7 +17,6 @@
             move_uploaded_file($pic_tmp,$pic_upload_path);
 
             $data = [
-                'send_title' => $_POST['post_title'],
                 'send_tag' => $_POST['post_select'],
                 'send_content' => $_POST['post_content'],
                 'send_pic' => $new_pic_name,
@@ -25,8 +24,8 @@
             ];
 
             var_dump($data);
-            $request = $database->prepare('INSERT INTO meow (meow_title, meow_tag, meow_pic, meow_content, meow_time, meow_userid)
-                                            VALUES (:send_title, :send_tag, :send_pic, :send_content, now(), :send_userid)');
+            $request = $database->prepare('INSERT INTO meow (meow_tag, meow_pic, meow_content, meow_time, meow_userid)
+                                            VALUES (:send_tag, :send_pic, :send_content, now(), :send_userid)');
             if($request->execute($data)){
                 header('Location: ../index.php');
             } else{

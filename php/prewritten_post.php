@@ -1,4 +1,3 @@
-<!-- Link to post a premade post when receiving an HTTP request -->
 <?php require_once 'pdo.php';
     $data = [
         'title' => 'Surprise post !',
