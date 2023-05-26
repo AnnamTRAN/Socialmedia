@@ -42,7 +42,7 @@
 
                 <li class="nav-item">
 
-                    <?php if (isset($_SESSION['username'])) {
+                    <?php if (isset($_SESSION['username'])) { // display username and pic when user is logged in, else profile icon link to login page 
                         echo '<a href="pages/profile.php" class="nav-link">';
                         echo '<p>' . $_SESSION['username'] . '</p>';
                         echo '<div id="box_profile"><img src="profile_pic/' . $_SESSION['pic'] . '" alt="profile_pic"></div>';
@@ -104,7 +104,7 @@
                 <!-- Banner -->
                 <div id="banner">
 
-                    <button id="mobile-menu" onclick="display(event)">
+                    <button id="mobile-menu" onclick="display(event)"> <!-- Button navbar for mobile ver. -->
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                             <path d="M272 304h-96C78.8 304 0 382.8 0 480c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32C448 382.8 369.2 304 272 304zM48.99 464C56.89 400.9 110.8 352 176 352h96c65.16 0 119.1 48.95 127 112H48.99zM224 256c70.69 0 128-57.31 128-128c0-70.69-57.31-128-128-128S96 57.31 96 128C96 198.7 153.3 256 224 256zM224 48c44.11 0 80 35.89 80 80c0 44.11-35.89 80-80 80S144 172.1 144 128C144 83.89 179.9 48 224 48z" />
                         </svg>
@@ -129,15 +129,15 @@
                     <?php require_once 'php/pdo.php';
                     if (isset($_POST['search'])) {
                         $search = $_POST['search']; // research value input from $_POST['search'] = name="search"
-                        $results = $database->prepare('SELECT * FROM meow LEFT JOIN user ON meow_userid = user_id WHERE meow_content LIKE :search
-                                                        ORDER BY meow_time DESC');
+                        $results = $database->prepare('SELECT * FROM meow INNER JOIN user ON meow_userid = user_id WHERE meow_content LIKE :search
+                                                        ORDER BY meow_time DESC'); // SQL SELECT statement is INNER JOIN. Only data From Table A and table B based on :search
                         $results->bindValue('search', '%' . $search . '%', PDO::PARAM_STR); // binds $_POST['search'] to 'search' parameter in SQL statement
                         $results->execute();
                         $users = $results->fetchAll();
                     } else {
-                        $users = $database->query('SELECT * FROM meow LEFT JOIN user ON meow_userid = user_id ORDER BY meow_time DESC');
+                        $users = $database->query('SELECT * FROM meow INNER JOIN user ON meow_userid = user_id ORDER BY meow_time DESC'); // Display all posts from database. PDO->query is used, no input required return SQL statement directly
                     }
-                    foreach ($users as $user) : ?>
+                    foreach ($users as $user) : ?> <!-- For each data retrieved, display its corresponding column -->
 
                         <article class="tag" data-value="<?= $user['meow_tag'] ?>">
                             <div class="top-post">
@@ -194,8 +194,8 @@
                 <div id="modal">
                     <div id="modal-border">
 
-                        <form class="modal-content" action="php/new_meow.php" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="form" value="meow">
+                        <form class="modal-content" action="php/new_meow.php" method="post" enctype="multipart/form-data"> <!-- Form post -->
+                            <input type="hidden" name="form" value="meow"> <!-- Ensure form is submitted properly on PHP script -->
                             <input type="hidden" name="post_userid" value="<?= $_SESSION['id']; ?>">
                             <select name="post_select" id="tag-select" required>
                                 <option value="" disabled selected>Select tag</option>
@@ -207,10 +207,10 @@
                             </select>
                             <br>
 
-                            <div id="post_pic">
+                            <div id="post_pic"> <!-- Placeholder for post's picture -->
                                 <img src="#" class="frame" alt="placeholder/profilepreview">
                             </div>
-                            <div id="editpic">
+                            <div id="editpic"> <!-- Input type="file" to add imgs (restricted to png, jpg, gif) -->
                                 <label for="inputGroupFile01" class="form-control label-file">Edit pic</label>
                                 <input type="file" name="post_pic" accept=".png, .jpg, .gif" id="inputGroupFile01" onchange="preview(event)" required>
                             </div>
@@ -221,18 +221,15 @@
 
                     </div>
                 </div>
-                <?php if (isset($_SESSION['username'])) {
+                <?php if (isset($_SESSION['username'])) { // Display modal button to post when user is logged in
                     echo '
                     <div class="trend-item">
                         <a href="#" id="modal-link">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
                         </a>
-                    </div>
-                    ';
-                }
-
+                    </div>';
+                    }  
                 ?>
-
             </div>
             <!-- TREND SIDE -->
 
@@ -243,7 +240,7 @@
     <footer>
 
     </footer>
-    <?php if (!isset($_SESSION['username'])) {
+    <?php if (!isset($_SESSION['username'])) { // Disable scroll script when user is logged in
         echo '<script src="js/scroll.js"></script>';
     } ?>
     <script src="JS/script.js"></script>

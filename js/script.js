@@ -109,22 +109,26 @@ const display = () =>{
     }
 }
 
-navbar.addEventListener('touchstart',(ev)=>{
-    downX = ev.touches[0].clientX
-    downY = ev.touches[0].clientY
+navbar.addEventListener('touchstart',(event)=>{
+    downX = event.touches[0].clientX /** User touchstart based on X coordinates of browser's window **/
+    downY = event.touches[0].clientY /** User touchstart based on Y coordinates of browser's window **/
+    console.log('TouchstartX:',downX,'TouchstartY',downY)
 })
 
-navbar.addEventListener('touchmove',(ev)=>{
-    let upX = ev.touches[0].clientX
-    let upY = ev.touches[0].clientY
+navbar.addEventListener('touchmove',(event)=>{
+    let upX = event.touches[0].clientX
+    let upY = event.touches[0].clientY
+    console.log('TouchmoveX:',upX,'TouchmoveY',upY)
     let diffX = downX - upX
     let diffY = downY - upY
+    console.log('DiffX:',diffX,'DiffY',diffY)
+    console.log('AbsDiffX:',Math.abs(diffX),'AbsDiffY',Math.abs(diffY))
     if(!downX || !downY){
         return
     }
 
-    if(Math.abs(diffX) > Math.abs(diffY)){
-        if (diffX > 0){
+    if(Math.abs(diffX) > Math.abs(diffY)){ /** Checks the magnitude of the differences to indicate wether the swipe is horizontal or vertical, which in this case is horizontal **/
+        if (diffX > 0){ /** If diffX is greater than 0, the swipe is from right to left **/
             navbar.style.transform = "translateX(-100%)"
         }
         else{

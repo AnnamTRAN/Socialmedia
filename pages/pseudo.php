@@ -107,14 +107,14 @@
                         $pseudo = $_GET['pseudo'];
                         if(isset($_POST['search'])){
                             $search = $_POST['search'];
-                            $results = $database->prepare('SELECT * FROM user LEFT JOIN meow ON user_id = meow_id WHERE :pseudo = user_username AND meow_content LIKE :search
+                            $results = $database->prepare('SELECT * FROM user INNER JOIN meow ON user_id = meow_id WHERE :pseudo = user_username AND meow_content LIKE :search
                                                         ORDER BY meow_time DESC');
                             $results->bindValue('search', '%'.$search.'%', PDO::PARAM_STR);
                             $results->bindValue('pseudo', $pseudo, PDO::PARAM_STR);
                             $results->execute(); 
                             $users = $results->fetchAll();
                         }else{
-                            $results = $database->prepare('SELECT * FROM user LEFT JOIN meow ON user_id = meow_userid WHERE :pseudo = user_username ORDER BY meow_time DESC');
+                            $results = $database->prepare('SELECT * FROM user INNER JOIN meow ON user_id = meow_userid WHERE :pseudo = user_username ORDER BY meow_time DESC');
                             $results->bindValue('pseudo', $pseudo, PDO::PARAM_STR);
                             $results->execute(); 
                             $users = $results->fetchAll();

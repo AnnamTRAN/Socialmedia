@@ -1,16 +1,14 @@
 <?php require_once 'pdo.php';
 
-    $pic_size = $_FILES['post_pic']['size'];
+    $pic_size = $_FILES['post_pic']['size']; // Pic size measured in bytes
     $pic_error = $_FILES['post_pic']['error'];
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['form'] == 'meow'){
-        if ($_POST['post_select'] != '' && $pic_size  < 2097152 && $pic_error <= 0){
+        if ($_POST['post_select'] != '' && $pic_size  < 2097152 && $pic_error <= 0){ // Pic size must be under 2MO
             
-            $pic_name = $_FILES['post_pic']['name'];
             $pic_tmp = $_FILES['post_pic']['tmp_name'];
 
             $pic_ex = pathinfo($pic_name, PATHINFO_EXTENSION);
             $pic_ex_lc = strtolower($pic_ex);
-            $extension = array("png", "jpg", "gif");
 
             $new_pic_name = uniqid("PIC", true).'.'.$pic_ex_lc;
             $pic_upload_path = '../post_pic/'.$new_pic_name;

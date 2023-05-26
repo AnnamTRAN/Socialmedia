@@ -1,5 +1,5 @@
 <?php require_once 'pdo.php';
-    session_start();
+    session_start(); // Starts session to store and retrieve data across multiple PHP pages, used for user-specific data
     if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['form'] == 'signin'){
         if($_POST['post_email'] != '' && $_POST['post_password'] != ''){
             
