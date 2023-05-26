@@ -58,8 +58,8 @@
             <form action="../php/new_user.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="form" value="signup">
 
-                <div class="container col-md-6">
-                    <div class="input-group mb-3">
+                <div class="container text-center">
+                    <div class="input-group mb-3" id="border_pic">
                         <img src="#" id ="profile_pic" class="frame" alt="placeholder/profilepreview">
                     </div>
                     <div>
@@ -69,23 +69,23 @@
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="text" name="post_name" class="form-control floatingInput" placeholder="name" required>
+                    <input type="text" name="post_name" class="form-control floatingInput" placeholder="name" required autocomplete="off">
                     <label for="floatingInput">Name</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="text" name="post_username" class="form-control floatingInput" placeholder="username123" required>
+                    <input type="text" name="post_username" class="form-control floatingInput" placeholder="username123" required autocomplete="off">
                     <label for="floatingInput">Username</label>
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input type="email" name="post_email" class="form-control floatingInput" placeholder="name@example.com" required>
+                    <input type="email" name="post_email" class="form-control floatingInput" placeholder="name@example.com" required autocomplete="off">
                     <label for="floatingInput">New email address</label>
                 </div>
         
                 
                 <div class="form-floating">
-                    <input type="password" name ="post_password" class="form-control" placeholder="Password" required>
+                    <input type="password" name ="post_password" class="form-control" placeholder="Password" required autocomplete="off">
                     <label for="floatingPassword">Password</label>
                 </div>
 

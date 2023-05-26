@@ -5,6 +5,7 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['form'] == 'meow'){
         if ($_POST['post_select'] != '' && $pic_size  < 2097152 && $pic_error <= 0){ // Pic size must be under 2MO
             
+            $pic_name = $_FILES['post_pic']['name'];
             $pic_tmp = $_FILES['post_pic']['tmp_name'];
 
             $pic_ex = pathinfo($pic_name, PATHINFO_EXTENSION);

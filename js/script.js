@@ -72,10 +72,11 @@ const Uncheck = () => {
 
 
 /*************************************************** POST **************************************************/
+
+/************** delete post ***************/
 const removeDiv = document.querySelectorAll('.remove')
 const removeButtons = document.querySelectorAll('.remove-button')
 const cancelButtons = document.querySelectorAll('.no')
-const navbar = document.getElementById('navbar')
 
 removeButtons.forEach(button =>{
     button.addEventListener('click',()=>{
@@ -96,10 +97,12 @@ removeDiv.forEach(div =>{
         }
     })
 })
+/************** delete post ***************/
 
 /************** swipe mobile ver ***************/
-let downX = null
-let downY = null
+const navbar = document.getElementById('navbar')
+let touchstartX = null
+let touchstartY = null
 
 const display = () =>{
     if (navbar.style.transform == "translateX(0%)"){
@@ -110,20 +113,17 @@ const display = () =>{
 }
 
 navbar.addEventListener('touchstart',(event)=>{
-    downX = event.touches[0].clientX /** User touchstart based on X coordinates of browser's window **/
-    downY = event.touches[0].clientY /** User touchstart based on Y coordinates of browser's window **/
-    console.log('TouchstartX:',downX,'TouchstartY',downY)
+    touchstartX = event.touches[0].clientX /** User touchstart based on X coordinates of browser's window **/
+    touchstartY = event.touches[0].clientY /** User touchstart based on Y coordinates of browser's window **/
 })
 
 navbar.addEventListener('touchmove',(event)=>{
-    let upX = event.touches[0].clientX
-    let upY = event.touches[0].clientY
-    console.log('TouchmoveX:',upX,'TouchmoveY',upY)
-    let diffX = downX - upX
-    let diffY = downY - upY
-    console.log('DiffX:',diffX,'DiffY',diffY)
-    console.log('AbsDiffX:',Math.abs(diffX),'AbsDiffY',Math.abs(diffY))
-    if(!downX || !downY){
+    let touchendX = event.touches[0].clientX
+    let touchendY = event.touches[0].clientY
+    let diffX = touchstartX - touchendX
+    let diffY = touchstartY - touchendY
+    console.log(diffX, diffY)
+    if(!touchendX || !touchendY){
         return
     }
 
@@ -135,12 +135,27 @@ navbar.addEventListener('touchmove',(event)=>{
             navbar.style.transform = "tranlateX(0%)"
         }
     }
-    downX = null;
-    downY = null;
+    touchendX = null;
+    touchendY = null;
 })
 
 /************** swipe mobile ver ***************/
 
+/************** hover effect keyframes ***************/
+const title = document.querySelector('h1')
+tags.forEach(tag => {
+    let style = window.getComputedStyle(tag)
+    let borderColor = style.getPropertyValue('border-left-color')
+    tag.addEventListener('mouseover', () =>{
+        tag.style.animation = "hover 500ms ease-in-out forwards"
+        title.style.color = borderColor
+    })
+    tag.addEventListener('mouseout', () =>{
+        tag.style.animation = "notHover 500ms ease-in-out forwards"
+        title.style.color = "whitesmoke"
+    })
+})
+/************** hover effect keyframes ***************/
 
 /*************************************************** POST **************************************************/
 
@@ -154,8 +169,31 @@ const preview = (event) =>{
 
 const picFile = document.getElementById('inputGroupFile01')
 const labelFile = document.querySelector('.label-file')
+let interval
+
+const blinking = () => {
+    if (labelFile.style.backgroundColor === "red"){
+        labelFile.style.backgroundColor = "rgba(255, 0, 0, 0.2)"
+    } else {
+        labelFile.style.backgroundColor = "red"
+    }
+}
+
+
+
 picFile.addEventListener('invalid', () =>{
-    labelFile.style.backgroundColor = "red"
+    if (!interval){
+        interval = setInterval(blinking, 100)
+    }
+    setTimeout(() =>{
+        clearInterval(interval)
+        labelFile.style.backgroundColor = "red"
+        interval = null
+    },1500)
+})
+
+picFile.addEventListener('change', () =>{
+    labelFile.style.backgroundColor = "green"
 })
 /************************************* PIC PREVIEW BOOSTRAP ************************/
 
@@ -173,8 +211,15 @@ window.onclick = function(event) {
       modal.style.display = "none"
     }
 }
-/************** locastorage post ***************/
 
+/************** localstorage clear on post ***************/
+const clear = document.getElementById('submit')
+clear.addEventListener('click', () =>{
+    localStorage.removeItem('txt')
+})
+/************** localstorage clear on post ***************/
+
+/************** locastorage post ***************/
 const msgstore = document.getElementById('textarea')
 msgstore.value = localStorage.getItem('txt')
 
@@ -182,18 +227,8 @@ msgstore.addEventListener('keyup',(event) =>{
     txt = event.target.value
     localStorage.setItem('txt',txt)
 })
-
 /************** locastorage post ***************/
 
-/************** localstorage clear on post ***************/
-
-const formsubmit = document.getElementsByClassName('modal-content')
-
-formsubmit.addEventListener('onsubmit',()=>{
-    localStorage.clear()
-})
-
-/************** localstorage clear on post ***************/
 
 
 

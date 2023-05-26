@@ -118,6 +118,25 @@
     border-bottom-right-radius: 10px;
     width: 75%;
     background: #34343A;
+    transition: all 500ms ease-in-out;
+}
+
+@keyframes hover {
+    from {
+        border-left-width: 3px;
+    }
+    to {
+        border-left-width: 50px;
+    }
+}
+
+@keyframes notHover {
+    from {
+        border-left-width: 50px;
+    }
+    to {
+        border-left-width: 3px;
+    }
 }
 
 .div-post_pic{
@@ -282,6 +301,8 @@ a:hover{
 .tag[data-value="#music"] h4{
     color: var(--color-tag10);
 }
+
+
 
 /**************** SMALL SCREEN *************/
 @media only screen and (max-width: 600px){
